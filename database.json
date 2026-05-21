@@ -1,0 +1,539 @@
+[
+    {
+        "id": 1,
+        "title": "Artificial Intelligence and its Future in 2026",
+        "url": "https://www.future-tech.org/artificial-intelligence-2026",
+        "description": "What are the major advances in generative AI this year? Full analysis of LLMs, software engineering automation, and autonomous agent workflows in daily life.",
+        "category": "web",
+        "tags": [
+            "ai",
+            "tech",
+            "future",
+            "artificial intelligence",
+            "agent",
+            "llm"
+        ],
+        "date": "2026-04-10",
+        "author": "Sarah Laporte",
+        "image": "https://images.unsplash.com/photo-1677442136019-21780efad99a"
+    },
+    {
+        "id": 2,
+        "title": "Traditional French Crêpes Recipe and Secret Cooking Tips",
+        "url": "https://www.breizh-cuisine.com/traditional-crepes-recipe",
+        "description": "Discover the secret to a light, delicious French crêpe batter. Professional pastry chef tips on selecting fine flour, butter seasoning, and cooking times.",
+        "category": "web",
+        "tags": [
+            "recipe",
+            "cooking",
+            "crepes",
+            "french",
+            "food",
+            "dessert"
+        ],
+        "date": "2025-08-15",
+        "author": "Jean-Yves Le Gall",
+        "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548"
+    },
+    {
+        "id": 3,
+        "title": "Mars Exploration: NASA Confirms Ancient River Networks",
+        "url": "https://www.space-mag.com/nasa-mars-rivers-discovery",
+        "description": "The Perseverance rover has gathered critical sediment samples proving that a vast, complex hydrological network existed on Mars billions of years ago.",
+        "category": "news",
+        "tags": [
+            "mars",
+            "nasa",
+            "space",
+            "science",
+            "astronomy",
+            "perseverance"
+        ],
+        "date": "2026-05-12",
+        "author": "Dr. Pierre Valo",
+        "image": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9"
+    },
+    {
+        "id": 4,
+        "title": "Mastering Modern JavaScript Quickly in 2026",
+        "url": "https://www.codeacademy.com/courses/modern-javascript-es15",
+        "description": "Learn JavaScript from scratch. Step-by-step guide exploring ES15 features, asynchronous operations with async/await, and browser-side reactive frameworks.",
+        "category": "web",
+        "tags": [
+            "javascript",
+            "code",
+            "development",
+            "web",
+            "programming",
+            "es15"
+        ],
+        "date": "2026-01-20",
+        "author": "Marc Dupont",
+        "image": "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a"
+    },
+    {
+        "id": 5,
+        "title": "History: The Night of August 4, 1789 and the End of Privileges",
+        "url": "https://www.history-france.org/revolution/night-august-4-1789",
+        "description": "A comprehensive historical study of the National Assembly session that abolished feudal rights and privileges, marking a major turning point of the French Revolution.",
+        "category": "web",
+        "tags": [
+            "history",
+            "france",
+            "revolution",
+            "archives",
+            "culture"
+        ],
+        "date": "2023-11-04",
+        "author": "Elise Martin",
+        "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176"
+    },
+    {
+        "id": 6,
+        "title": "Top 10 Most Beautiful Hiking Trails on the French Riviera",
+        "url": "https://www.provence-escape.com/hiking-french-riviera-esterel",
+        "description": "From the red volcanic cliffs of the Esterel to the coastal paths of Saint-Jean-Cap-Ferrat, plan your next nature excursion between sea and mountains.",
+        "category": "web",
+        "tags": [
+            "french riviera",
+            "hiking",
+            "nature",
+            "travel",
+            "provence",
+            "sport"
+        ],
+        "date": "2025-06-02",
+        "author": "Julie Brunet",
+        "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077"
+    },
+    {
+        "id": 7,
+        "title": "python",
+        "url": "https://www.python.org/",
+        "description": "Python is useful for writing server-side code because it offers many libraries that consist of pre-written code for complex backend functions.",
+        "content": "Python is useful for writing server-side code because it offers many libraries that consist of pre-written code for complex backend functions.",
+        "category": "web",
+        "tags": [
+            "coding",
+            "code",
+            "server",
+            "side",
+            "writing",
+            "useful",
+            "python"
+        ],
+        "date": "2026-05-18",
+        "author": "Global Web Crawler",
+        "image": "python.png"
+    },
+    {
+        "id": 8,
+        "title": "python",
+        "url": "https://www.python.org/",
+        "description": "Python is useful for writing server-side code because it offers many libraries that consist of pre-written code for complex backend functions.",
+        "content": "Python is useful for writing server-side code because it offers many libraries that consist of pre-written code for complex backend functions.",
+        "category": "web",
+        "tags": [
+            "coding",
+            "code",
+            "server",
+            "side",
+            "writing",
+            "useful",
+            "python"
+        ],
+        "date": "2026-05-18",
+        "author": "Global Web Crawler",
+        "image": "python.png"
+    },
+    {
+        "id": 9,
+        "title": "chromebook",
+        "url": "https://nexeo-webbrowser.com/chromebook",
+        "description": "Chromebook (stylized in all-lowercase) is a line of laptops, desktops, tablets and all-in-one computers that run ChromeOS, a proprietary operating system developed by Google.\n\nChromebooks are optimised for web access. They also run Android apps, Linux applications, and progressive web apps which do not require an Internet connection.[1] They are manufactured and offered by various OEMs.[2]\n\nThe first Chromebooks were shipped on June 15, 2011. As of 2020, Chromebook's market share is 10.8%, placing it above the Mac platform; it has mainly found success in education markets.[3]\n\nSince 2021, all Chromebooks receive 10 years of regular automatic updates with security patches from Google; previously, Chromebooks received 8 years of updates.[4][5] Chromebooks can be repurposed with other operating systems and/or used for other purposes if required.[6]\n\nHistory\nThe first Chromebooks for sale, by Acer Inc. and Samsung, were announced at the Google I/O conference on May 11, 2011 and began shipping on June 15, 2011.[7] Lenovo, Hewlett-Packard (now HP Inc.) and Google itself entered the market in early 2013. In December 2013, Samsung launched a Samsung Chromebook specifically for the Indian market that employed the company's Exynos 5 Dual core processor.[8]\n\nCritical reaction to the device was initially skeptical, with some reviewers, such as then New York Times technology columnist David Pogue,[9] unfavorably comparing the value proposition of Chromebooks with that of more fully featured laptops running the Microsoft Windows operating system. That complaint dissipated later in reviews of machines from Acer and Samsung that were priced lower.[10]\n\nIn February 2013, Google announced and began shipping the Chromebook Pixel, a higher-spec machine with a high-end retail price.[11]\n\nIn January 2015, Acer announced the first big screen Chromebook, the Acer Chromebook 15 with an FHD 15.6-inch display.[12]\n\nBy March 2018, Chromebooks made up 60% of computers purchased by schools in the United States. In October 2012, Simon Phipps, writing in InfoWorld, said, \"The Chromebook line is probably the most successful Linux desktop/laptop computer we've seen to date\".[13]\n\nOn October 9, 2023, Google announced Chromebook Plus, a new category of Chromebooks that requires minimum hardware specifications, such as CPU (Intel Core i3 12th Gen or the AMD Ryzen 3 7000 series), at least 8 GB of RAM, 128 GB of local storage, 1080p IPS or better display and a 1080p+ web camera. The Plus supports video-editing with LumaFusion and web versions of Google Photos Magic Eraser and Adobe Photoshop.[14]\n\nIntegration with Android\nIn May 2016, Google announced it would make Android apps available on Chromebooks via the Google Play application distribution platform. At the time, Google Play access was scheduled for the ASUS Chromebook Flip, the Acer Chromebook R 11 and the most recent Chromebook Pixel, with other Chromebooks slated over time.[15][16][17] Partnering with Google, Samsung released the Chromebook Plus and Chromebook Pro in early 2017, the first Chromebooks to come with the Play Store pre-installed.[18] A February 2017 review in The Verge reported that the Plus with its ARM processor handled Android apps \"much better\" than the Intel-based Pro, but said that \"Android apps on Chrome OS are still in beta\" and are \"very much [an] unfinished experience.\"[19] The number of ChromeOS systems supporting Android apps in either the stable or beta channel is increasing.[20][21]\n\nIn the 2021 Android 11 launch, it was announced that Android apps would be moved to a new virtual machine called ArcVM, to improve Android’s environment isolation for better security and maintainability.[22]\n\nCompatibility with Linux applications (GNU compatibility)\nIn May 2018, Google announced it would make Linux desktop applications available on Chromebooks via a virtual machine code-named \"Crostini\". ChromeOS, which runs on Chromebooks, is already based on the Linux kernel, but it does not provide default support for applications that expect a GNU-based system. Crostini left the beta stage in May 2021 as part of release 91.[23][24] Google maintains a list of devices that were launched before 2019, which support Crostini.[25][26]",
+        "content": "Chromebook (stylized in all-lowercase) is a line of laptops, desktops, tablets and all-in-one computers that run ChromeOS, a proprietary operating system developed by Google.\n\nChromebooks are optimised for web access. They also run Android apps, Linux applications, and progressive web apps which do not require an Internet connection.[1] They are manufactured and offered by various OEMs.[2]\n\nThe first Chromebooks were shipped on June 15, 2011. As of 2020, Chromebook's market share is 10.8%, placing it above the Mac platform; it has mainly found success in education markets.[3]\n\nSince 2021, all Chromebooks receive 10 years of regular automatic updates with security patches from Google; previously, Chromebooks received 8 years of updates.[4][5] Chromebooks can be repurposed with other operating systems and/or used for other purposes if required.[6]\n\nHistory\nThe first Chromebooks for sale, by Acer Inc. and Samsung, were announced at the Google I/O conference on May 11, 2011 and began shipping on June 15, 2011.[7] Lenovo, Hewlett-Packard (now HP Inc.) and Google itself entered the market in early 2013. In December 2013, Samsung launched a Samsung Chromebook specifically for the Indian market that employed the company's Exynos 5 Dual core processor.[8]\n\nCritical reaction to the device was initially skeptical, with some reviewers, such as then New York Times technology columnist David Pogue,[9] unfavorably comparing the value proposition of Chromebooks with that of more fully featured laptops running the Microsoft Windows operating system. That complaint dissipated later in reviews of machines from Acer and Samsung that were priced lower.[10]\n\nIn February 2013, Google announced and began shipping the Chromebook Pixel, a higher-spec machine with a high-end retail price.[11]\n\nIn January 2015, Acer announced the first big screen Chromebook, the Acer Chromebook 15 with an FHD 15.6-inch display.[12]\n\nBy March 2018, Chromebooks made up 60% of computers purchased by schools in the United States. In October 2012, Simon Phipps, writing in InfoWorld, said, \"The Chromebook line is probably the most successful Linux desktop/laptop computer we've seen to date\".[13]\n\nOn October 9, 2023, Google announced Chromebook Plus, a new category of Chromebooks that requires minimum hardware specifications, such as CPU (Intel Core i3 12th Gen or the AMD Ryzen 3 7000 series), at least 8 GB of RAM, 128 GB of local storage, 1080p IPS or better display and a 1080p+ web camera. The Plus supports video-editing with LumaFusion and web versions of Google Photos Magic Eraser and Adobe Photoshop.[14]\n\nIntegration with Android\nIn May 2016, Google announced it would make Android apps available on Chromebooks via the Google Play application distribution platform. At the time, Google Play access was scheduled for the ASUS Chromebook Flip, the Acer Chromebook R 11 and the most recent Chromebook Pixel, with other Chromebooks slated over time.[15][16][17] Partnering with Google, Samsung released the Chromebook Plus and Chromebook Pro in early 2017, the first Chromebooks to come with the Play Store pre-installed.[18] A February 2017 review in The Verge reported that the Plus with its ARM processor handled Android apps \"much better\" than the Intel-based Pro, but said that \"Android apps on Chrome OS are still in beta\" and are \"very much [an] unfinished experience.\"[19] The number of ChromeOS systems supporting Android apps in either the stable or beta channel is increasing.[20][21]\n\nIn the 2021 Android 11 launch, it was announced that Android apps would be moved to a new virtual machine called ArcVM, to improve Android’s environment isolation for better security and maintainability.[22]\n\nCompatibility with Linux applications (GNU compatibility)\nIn May 2018, Google announced it would make Linux desktop applications available on Chromebooks via a virtual machine code-named \"Crostini\". ChromeOS, which runs on Chromebooks, is already based on the Linux kernel, but it does not provide default support for applications that expect a GNU-based system. Crostini left the beta stage in May 2021 as part of release 91.[23][24] Google maintains a list of devices that were launched before 2019, which support Crostini.[25][26]",
+        "category": "web",
+        "tags": [
+            "desktops",
+            "chromebook",
+            "line",
+            "lowercase",
+            "laptops",
+            "stylized"
+        ],
+        "date": "2026-05-19",
+        "author": "Global Web Crawler",
+        "image": "chromebook.png"
+    },
+    {
+        "id": 10,
+        "title": "github",
+        "url": "https://nexeo-webbrowser.com/github",
+        "description": "GitHub (/ˈɡɪthʌb/ ⓘ) is a proprietary developer platform that allows developers to create, store, manage, and share their code. It uses Git to provide distributed version control and GitHub itself provides access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.[9] GitHub, headquartered in San Francisco, is operated by Github, Inc., a subsidiary of Microsoft since 2018.[10]\n\nIt is commonly used to host open source software development projects.[11] As of January 2023, GitHub reported having over 100 million developers and more than 420 million repositories, including at least 28 million public repositories.[12] It is the world's largest source code host as of June 2023. Over five billion developer contributions were made to more than 500 million open source projects in 2024.[13]",
+        "content": "GitHub (/ˈɡɪthʌb/ ⓘ) is a proprietary developer platform that allows developers to create, store, manage, and share their code. It uses Git to provide distributed version control and GitHub itself provides access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.[9] GitHub, headquartered in San Francisco, is operated by Github, Inc., a subsidiary of Microsoft since 2018.[10]\n\nIt is commonly used to host open source software development projects.[11] As of January 2023, GitHub reported having over 100 million developers and more than 420 million repositories, including at least 28 million public repositories.[12] It is the world's largest source code host as of June 2023. Over five billion developer contributions were made to more than 500 million open source projects in 2024.[13]",
+        "category": "web",
+        "tags": [
+            "github",
+            "that",
+            "proprietary",
+            "ˈɡɪthʌb",
+            "platform",
+            "developer"
+        ],
+        "date": "2026-05-19",
+        "author": "Global Web Crawler",
+        "image": "github.png"
+    },
+    {
+        "id": 11,
+        "title": "python image",
+        "url": "https://nexeo-webbrowser/image/python/",
+        "description": "python image",
+        "content": "python image",
+        "category": "images",
+        "tags": [
+            "image",
+            "python image",
+            "python"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "python.png"
+    },
+    {
+        "id": 12,
+        "title": "python code image",
+        "url": "https://nexeo-webbrowser/image/python-code/",
+        "description": "python code",
+        "content": "python code",
+        "category": "images",
+        "tags": [
+            "code",
+            "python code",
+            "python"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "python-code.png"
+    },
+    {
+        "id": 13,
+        "title": "python code",
+        "url": "https://nexeo-webbrowser/image/pythoncode",
+        "description": "python code image",
+        "content": "python code image",
+        "category": "images",
+        "tags": [
+            "code",
+            "image",
+            "python code",
+            "python"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "python_code.png"
+    },
+    {
+        "id": 14,
+        "title": "nexeo",
+        "url": "https://nexeo-webbrowser/search/nexeo",
+        "description": "Nexeo is a web development, 3D game, and AI company. Founded in 2026, its website is https://nexeo-webbrowser.netlify.app",
+        "content": "Nexeo is a web development, 3D game, and AI company. Founded in 2026, its website is https://nexeo-webbrowser.netlify.app",
+        "category": "web",
+        "tags": [
+            "founded",
+            "nexeo",
+            "game",
+            "company",
+            "development",
+            "2026"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "nexeo-image.jpeg"
+    },
+    {
+        "id": 15,
+        "title": "Nexeo Web image",
+        "url": "https://nexeo-webbrowser.com/image/nexeo-web/",
+        "description": "Nexeo Web",
+        "content": "Nexeo Web",
+        "category": "images",
+        "tags": [
+            "nexeo",
+            "nexeo web"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "nexeo-web-image.jpeg"
+    },
+    {
+        "id": 16,
+        "title": "The AI",
+        "url": "https://nexeo-webbrowser.com/search/AI",
+        "description": "Artificial Intelligence (AI)\n\nWhat Is Artificial Intelligence?\n\nArtificial Intelligence (AI) refers to the ability of machines and computer systems to perform tasks that normally require human intelligence. These tasks include learning, reasoning, problem-solving, understanding language, recognizing images, and making decisions.\n\nAI systems are designed to analyze data, identify patterns, and improve their performance over time. Today, AI is used in many industries such as healthcare, finance, education, transportation, and entertainment.\n\nTypes of Artificial Intelligence\n1. Narrow AI\n\nNarrow AI, also called Weak AI, is designed to perform a specific task. Examples include voice assistants, recommendation systems, and facial recognition software.\n\n2. General AI\n\nGeneral AI is a more advanced concept where machines would have the ability to understand and perform any intellectual task that a human can do. This type of AI does not yet exist.\n\n3. Super AI\n\nSuper AI refers to a hypothetical future where artificial intelligence surpasses human intelligence in all areas.\n\nHow AI Works\n\nAI systems typically rely on:\n\nData: Large amounts of information used for training.\nAlgorithms: Mathematical instructions that guide the system.\nMachine Learning: A branch of AI that enables systems to learn from data.\nNeural Networks: Models inspired by the human brain.\n\nOne popular area of AI is Deep Learning, which uses complex neural networks to process images, speech, and text.\n\nApplications of AI\n\nAI is already part of everyday life. Common applications include:\n\nVirtual assistants like Siri and Alexa\nChatbots and customer support systems\nAutonomous vehicles\nMedical diagnosis tools\nFraud detection in banking\nPersonalized recommendations on streaming platforms\nAdvantages of AI\nFaster data processing\nIncreased efficiency and productivity\nReduction of human error\nAbility to automate repetitive tasks\nImproved decision-making through data analysis\nChallenges and Risks\n\nDespite its benefits, AI also presents challenges:\n\nPrivacy concerns\nJob displacement due to automation\nEthical questions about decision-making\nBias in AI systems\nSecurity risks\n\nResponsible development and regulation are important to ensure AI benefits society.\n\nThe Future of AI\n\nArtificial Intelligence is expected to continue evolving rapidly. Experts believe AI will transform industries, improve scientific research, and change the way humans interact with technology.\n\nAt the same time, governments, companies, and researchers must work together to develop AI responsibly and ethically.\n\nConclusion\n\nArtificial Intelligence is one of the most important technological developments of the 21st century. It has the potential to improve lives, solve complex problems, and create new opportunities across the world.\n\nUnderstanding AI is becoming increasingly important as technology continues to shape modern society.",
+        "content": "Artificial Intelligence (AI)\n\nWhat Is Artificial Intelligence?\n\nArtificial Intelligence (AI) refers to the ability of machines and computer systems to perform tasks that normally require human intelligence. These tasks include learning, reasoning, problem-solving, understanding language, recognizing images, and making decisions.\n\nAI systems are designed to analyze data, identify patterns, and improve their performance over time. Today, AI is used in many industries such as healthcare, finance, education, transportation, and entertainment.\n\nTypes of Artificial Intelligence\n1. Narrow AI\n\nNarrow AI, also called Weak AI, is designed to perform a specific task. Examples include voice assistants, recommendation systems, and facial recognition software.\n\n2. General AI\n\nGeneral AI is a more advanced concept where machines would have the ability to understand and perform any intellectual task that a human can do. This type of AI does not yet exist.\n\n3. Super AI\n\nSuper AI refers to a hypothetical future where artificial intelligence surpasses human intelligence in all areas.\n\nHow AI Works\n\nAI systems typically rely on:\n\nData: Large amounts of information used for training.\nAlgorithms: Mathematical instructions that guide the system.\nMachine Learning: A branch of AI that enables systems to learn from data.\nNeural Networks: Models inspired by the human brain.\n\nOne popular area of AI is Deep Learning, which uses complex neural networks to process images, speech, and text.\n\nApplications of AI\n\nAI is already part of everyday life. Common applications include:\n\nVirtual assistants like Siri and Alexa\nChatbots and customer support systems\nAutonomous vehicles\nMedical diagnosis tools\nFraud detection in banking\nPersonalized recommendations on streaming platforms\nAdvantages of AI\nFaster data processing\nIncreased efficiency and productivity\nReduction of human error\nAbility to automate repetitive tasks\nImproved decision-making through data analysis\nChallenges and Risks\n\nDespite its benefits, AI also presents challenges:\n\nPrivacy concerns\nJob displacement due to automation\nEthical questions about decision-making\nBias in AI systems\nSecurity risks\n\nResponsible development and regulation are important to ensure AI benefits society.\n\nThe Future of AI\n\nArtificial Intelligence is expected to continue evolving rapidly. Experts believe AI will transform industries, improve scientific research, and change the way humans interact with technology.\n\nAt the same time, governments, companies, and researchers must work together to develop AI responsibly and ethically.\n\nConclusion\n\nArtificial Intelligence is one of the most important technological developments of the 21st century. It has the potential to improve lives, solve complex problems, and create new opportunities across the world.\n\nUnderstanding AI is becoming increasingly important as technology continues to shape modern society.",
+        "category": "web",
+        "tags": [
+            "intelligence",
+            "ability",
+            "ia",
+            "refers",
+            "machines",
+            "artificial",
+            "what",
+            "ai"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "AI.png"
+    },
+    {
+        "id": 17,
+        "title": "AI image",
+        "url": "https:/nexeo-webbrowser.com/image/AI",
+        "description": "AI image",
+        "content": "AI image",
+        "category": "images",
+        "tags": [
+            "ia",
+            "ai image",
+            "ai",
+            "image",
+            "ia image"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "AI.png"
+    },
+    {
+        "id": 18,
+        "title": "AI image",
+        "url": "https:/nexeo-webbrowser.com/image/AI-L",
+        "description": "AI image",
+        "content": "AI image",
+        "category": "images",
+        "tags": [
+            "ai",
+            "image",
+            "ai image"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "AI.png"
+    },
+    {
+        "id": 19,
+        "title": "python FR",
+        "url": "https:/nexeo-webbrowser.com/search/python-FR",
+        "description": "Python (prononcé /pi.tɔ̃/) est un langage de programmation interprété, multiparadigme et multiplateformes. Il favorise la programmation impérative structurée, fonctionnelle et orientée objet. Il est doté d'un typage dynamique fort, d'une gestion automatique de la mémoire par ramasse-miettes et d'un système de gestion d'exceptions. Il a des similarités avec Perl, Ruby, Scheme, Smalltalk et Tcl.\n\nLe langage Python est placé sous une licence libre proche de la licence BSD et fonctionne sur la plupart des plateformes informatiques, des smartphones aux ordinateurs centraux, de Microsoft Windows à Unix avec notamment GNU/Linux en passant par macOS, ou encore Android, iOS, et peut aussi être traduit en Java ou .NET. Il est conçu pour optimiser la productivité des programmeurs en offrant des outils de haut niveau et une syntaxe simple à utiliser.\n\nUtilisation\nPython est un langage de programmation qui peut s'utiliser dans de nombreux contextes grâce à des bibliothèques spécialisées.\n\nIl est utilisé comme langage de script pour automatiser des tâches comme la récupération de la météo sur Internet ou l'enchaînement d'actions en conception assistée par ordinateur (voir la section Adoption). On l'utilise également comme langage de développement de prototype lorsqu'on a besoin d'une application fonctionnelle avant de l'optimiser avec un langage compilé. Il est particulièrement répandu dans le monde scientifique, et possède des bibliothèques optimisées pour le calcul numérique.\n\nC'est l'un des langages utilisés dans le domaine du big data, de l'informatique quantique et de l'intelligence artificielle incluant l'apprentissage automatique.",
+        "content": "Python (prononcé /pi.tɔ̃/) est un langage de programmation interprété, multiparadigme et multiplateformes. Il favorise la programmation impérative structurée, fonctionnelle et orientée objet. Il est doté d'un typage dynamique fort, d'une gestion automatique de la mémoire par ramasse-miettes et d'un système de gestion d'exceptions. Il a des similarités avec Perl, Ruby, Scheme, Smalltalk et Tcl.\n\nLe langage Python est placé sous une licence libre proche de la licence BSD et fonctionne sur la plupart des plateformes informatiques, des smartphones aux ordinateurs centraux, de Microsoft Windows à Unix avec notamment GNU/Linux en passant par macOS, ou encore Android, iOS, et peut aussi être traduit en Java ou .NET. Il est conçu pour optimiser la productivité des programmeurs en offrant des outils de haut niveau et une syntaxe simple à utiliser.\n\nUtilisation\nPython est un langage de programmation qui peut s'utiliser dans de nombreux contextes grâce à des bibliothèques spécialisées.\n\nIl est utilisé comme langage de script pour automatiser des tâches comme la récupération de la météo sur Internet ou l'enchaînement d'actions en conception assistée par ordinateur (voir la section Adoption). On l'utilise également comme langage de développement de prototype lorsqu'on a besoin d'une application fonctionnelle avant de l'optimiser avec un langage compilé. Il est particulièrement répandu dans le monde scientifique, et possède des bibliothèques optimisées pour le calcul numérique.\n\nC'est l'un des langages utilisés dans le domaine du big data, de l'informatique quantique et de l'intelligence artificielle incluant l'apprentissage automatique.",
+        "category": "web",
+        "tags": [
+            "prononce",
+            "python fr",
+            "python",
+            "langage python",
+            "programmation",
+            "langage",
+            "interprete",
+            "multiparadigme"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "python.png"
+    },
+    {
+        "id": 20,
+        "title": "Google LLC",
+        "url": "https://nexeo-webbrowser.com/search/google",
+        "description": "Google LLC is an American online technology services company founded in 1998 in Silicon Valley, California, by Larry Page and Sergey Brin, creators of the Google search engine.\n\nIt has been a subsidiary of Alphabet since August 2015.\n\nThe company first gained recognition for the monopolistic position of its search engine, which was historically challenged by AltaVista, then by Yahoo! and Bing. It subsequently made numerous acquisitions and developments and now owns many notable software programs and websites, including YouTube, the Android mobile operating system, and other services such as Gmail, Google Earth, Google Maps, Google Play, and Google Workspace.\n\nFollowing Larry Page and Eric Schmidt, its CEO has been Pichai Sundararajan since 2015.\n\nGoogle became one of the leading American and global companies in terms of market capitalization just a few years after its unique initial public offering. At the beginning of 2008, it was worth $176 billion on Wall Street. On February 1, 2016, its market capitalization surpassed that of Apple, becoming the largest in the United States, with a total of $550 billion across its various share classes.\n\nIn 2014, Interbrand's Best Global Brands ranking placed Google second globally, behind Apple, with an estimated value of $107.43 billion (up 15% from 2013), exceeding the $100 billion mark for the first time since the ranking's inception in 1974. In 2016, the Brand Z Top 100 ranking placed Google first, ahead of Apple.\n\nThe company has approximately 50,000 employees. Most work at its global headquarters: the Googleplex, in Mountain View, California.\n\nGoogle is one of the largest companies in the internet market and, along with Apple, Facebook, Amazon, and Microsoft, is one of the web giants (also known as GAFAM). In 2011, Google had over 900,000 servers, compared to 400,000 in 2006, making it the largest server network in the world (2% of the total number of machines), with devices distributed across 32 sites. Meanwhile, the Google search engine indexed over 1 trillion web pages in 2008. In October 2010, Google accounted for 6.4% of global internet traffic and was growing faster than the web as a whole. In Europe, Google reportedly held a 93% market share in the search engine market.\n\nBeyond its search engine, Google offers numerous free software programs and services (email, office suite, video, photos, blogs, etc.) and has been funded by advertising since 2000, primarily through sponsored links in search results and a \"cost-per-click\" model for advertisers. However, its growing monopoly and privacy concerns are increasingly worrying everyone from casual internet users to large organizations. Google has also faced several lawsuits, notably regarding copyright infringement and its Google Books platform.",
+        "content": "Google LLC is an American online technology services company founded in 1998 in Silicon Valley, California, by Larry Page and Sergey Brin, creators of the Google search engine.\n\nIt has been a subsidiary of Alphabet since August 2015.\n\nThe company first gained recognition for the monopolistic position of its search engine, which was historically challenged by AltaVista, then by Yahoo! and Bing. It subsequently made numerous acquisitions and developments and now owns many notable software programs and websites, including YouTube, the Android mobile operating system, and other services such as Gmail, Google Earth, Google Maps, Google Play, and Google Workspace.\n\nFollowing Larry Page and Eric Schmidt, its CEO has been Pichai Sundararajan since 2015.\n\nGoogle became one of the leading American and global companies in terms of market capitalization just a few years after its unique initial public offering. At the beginning of 2008, it was worth $176 billion on Wall Street. On February 1, 2016, its market capitalization surpassed that of Apple, becoming the largest in the United States, with a total of $550 billion across its various share classes.\n\nIn 2014, Interbrand's Best Global Brands ranking placed Google second globally, behind Apple, with an estimated value of $107.43 billion (up 15% from 2013), exceeding the $100 billion mark for the first time since the ranking's inception in 1974. In 2016, the Brand Z Top 100 ranking placed Google first, ahead of Apple.\n\nThe company has approximately 50,000 employees. Most work at its global headquarters: the Googleplex, in Mountain View, California.\n\nGoogle is one of the largest companies in the internet market and, along with Apple, Facebook, Amazon, and Microsoft, is one of the web giants (also known as GAFAM). In 2011, Google had over 900,000 servers, compared to 400,000 in 2006, making it the largest server network in the world (2% of the total number of machines), with devices distributed across 32 sites. Meanwhile, the Google search engine indexed over 1 trillion web pages in 2008. In October 2010, Google accounted for 6.4% of global internet traffic and was growing faster than the web as a whole. In Europe, Google reportedly held a 93% market share in the search engine market.\n\nBeyond its search engine, Google offers numerous free software programs and services (email, office suite, video, photos, blogs, etc.) and has been funded by advertising since 2000, primarily through sponsored links in search results and a \"cost-per-click\" model for advertisers. However, its growing monopoly and privacy concerns are increasingly worrying everyone from casual internet users to large organizations. Google has also faced several lawsuits, notably regarding copyright infringement and its Google Books platform.",
+        "category": "web",
+        "tags": [
+            "google"
+        ],
+        "date": "2026-05-20",
+        "author": "Global Web Crawler",
+        "image": "google-image.png"
+    },
+    {
+        "id": 21,
+        "title": "GitHub image",
+        "url": "https://nexeo-webbrowser.com/image/github",
+        "description": "GitHub image",
+        "content": "GitHub image",
+        "category": "images",
+        "tags": [
+            "github"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "github.png"
+    },
+    {
+        "id": 22,
+        "title": "door",
+        "url": "https://nexeo-webbrowser/search/door",
+        "description": "DOOR\n\nIn architecture and construction, a door (from the 11th century, from the Latin *porta*) is a structure (made of wood or metal), an opening (a bay) in a wall allowing entry to and exit from a property, a building, or circulation within its rooms. In everyday usage, the word \"door\" refers only to the movable door (the \"huis\") that closes this passage by rotating or sliding, and which is stabilized by the frame.\n\nFor furniture, we speak of a sideboard door, a cupboard door, a box bed door, etc.\n\nHistory\nThe access door to a building, the door within a structure, is defined according to philosophical-religious, anthropomorphic, aesthetic, or rational concepts that make it a unique architectural object.\n\nSome examples: In some religious architecture, the main door is oriented towards a cardinal direction. Churches and Gothic cathedrals, for instance, have a door facing west (following the western axis). In Eastern architecture, the door, which symbolizes access to the building, can be positioned to allow telluric currents to penetrate, according to the designer's foresight. During construction, this door may be placed at a slight angle to the facade to correspond to these perceived currents. In classical architectural compositions where symmetry is strictly enforced, false doors (which do not open) are incorporated into building galleries. Finally, the most remarkable door today, due to its size, is the one that allows rockets to exit the assembly hangar at Cape Kennedy, USA.\n\nThe door was, and often remains, a ceremonial element that has justified, in some countries, a tax on doors and windows. \"Huis\" is the now obsolete term for the door; \"huis clos,\" or closed door, refers to the concern to prevent the transmission of information during trials and political affairs. The concept of \"open doors\" reflects organizations' concern for transparency in information dissemination. Louis XIV, for example, implemented this principle by granting access to the Palace of Versailles to anyone dressed appropriately.\n\nPrehistoric dwellings featured openings and closures to protect themselves from the elements and predators. Archaeological excavations have revealed pits to the left and right of these \"exits,\" containing bones and food waste.\n\nDuring Antiquity, paintings in Egyptian tombs depict wooden doors for important buildings (with their associated symbolism, as described in the Book of Gates). However, ordinary houses, due to the dry climate and the scarcity of wood, simply had an opening covered with a mat or cloth. The Ishtar Gate offers a glimpse into Babylonian architecture. Ancient Greece saw the development of porticoes projecting from the facades of buildings. The Roman triumphal arch, erected in honor of a distinguished figure or commemorating some glorious event, is generally placed at the city gate.\n\nThe term \"gate\" appeared in the Middle Ages with fortified castles equipped with drawbridges and posterns integrated into the walls; previously, the term \"gateway\" was used. Primarily barricaded, gates were fitted with locks that opened from both sides with the development of urbanization in the 15th century. The door preserving the privacy of a room appeared in the 17th century under Louis XIV. The need to monitor the entrance led to the creation of the professions of gatekeeper, doorman, concierge, usher (of a palace), or gate guard. An integral part of our living environment, the door is now being equipped with accessories for automated surveillance functions in home automation systems.",
+        "content": "DOOR\n\nIn architecture and construction, a door (from the 11th century, from the Latin *porta*) is a structure (made of wood or metal), an opening (a bay) in a wall allowing entry to and exit from a property, a building, or circulation within its rooms. In everyday usage, the word \"door\" refers only to the movable door (the \"huis\") that closes this passage by rotating or sliding, and which is stabilized by the frame.\n\nFor furniture, we speak of a sideboard door, a cupboard door, a box bed door, etc.\n\nHistory\nThe access door to a building, the door within a structure, is defined according to philosophical-religious, anthropomorphic, aesthetic, or rational concepts that make it a unique architectural object.\n\nSome examples: In some religious architecture, the main door is oriented towards a cardinal direction. Churches and Gothic cathedrals, for instance, have a door facing west (following the western axis). In Eastern architecture, the door, which symbolizes access to the building, can be positioned to allow telluric currents to penetrate, according to the designer's foresight. During construction, this door may be placed at a slight angle to the facade to correspond to these perceived currents. In classical architectural compositions where symmetry is strictly enforced, false doors (which do not open) are incorporated into building galleries. Finally, the most remarkable door today, due to its size, is the one that allows rockets to exit the assembly hangar at Cape Kennedy, USA.\n\nThe door was, and often remains, a ceremonial element that has justified, in some countries, a tax on doors and windows. \"Huis\" is the now obsolete term for the door; \"huis clos,\" or closed door, refers to the concern to prevent the transmission of information during trials and political affairs. The concept of \"open doors\" reflects organizations' concern for transparency in information dissemination. Louis XIV, for example, implemented this principle by granting access to the Palace of Versailles to anyone dressed appropriately.\n\nPrehistoric dwellings featured openings and closures to protect themselves from the elements and predators. Archaeological excavations have revealed pits to the left and right of these \"exits,\" containing bones and food waste.\n\nDuring Antiquity, paintings in Egyptian tombs depict wooden doors for important buildings (with their associated symbolism, as described in the Book of Gates). However, ordinary houses, due to the dry climate and the scarcity of wood, simply had an opening covered with a mat or cloth. The Ishtar Gate offers a glimpse into Babylonian architecture. Ancient Greece saw the development of porticoes projecting from the facades of buildings. The Roman triumphal arch, erected in honor of a distinguished figure or commemorating some glorious event, is generally placed at the city gate.\n\nThe term \"gate\" appeared in the Middle Ages with fortified castles equipped with drawbridges and posterns integrated into the walls; previously, the term \"gateway\" was used. Primarily barricaded, gates were fitted with locks that opened from both sides with the development of urbanization in the 15th century. The door preserving the privacy of a room appeared in the 17th century under Louis XIV. The need to monitor the entrance led to the creation of the professions of gatekeeper, doorman, concierge, usher (of a palace), or gate guard. An integral part of our living environment, the door is now being equipped with accessories for automated surveillance functions in home automation systems.",
+        "category": "web",
+        "tags": [
+            "architecture",
+            "construction",
+            "door"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "door3.jpg"
+    },
+    {
+        "id": 23,
+        "title": "Door image",
+        "url": "https://nexeo-webbrowser/image/door",
+        "description": "Door image",
+        "content": "Door image",
+        "category": "images",
+        "tags": [
+            "door",
+            "image door",
+            "door image"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "door1.jpg"
+    },
+    {
+        "id": 24,
+        "title": "Door image",
+        "url": "https://nexeo-webbrowser/image/door",
+        "description": "Door image",
+        "content": "Door image",
+        "category": "images",
+        "tags": [
+            "door",
+            "image door",
+            "door image"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "door2.jpg"
+    },
+    {
+        "id": 25,
+        "title": "Porte",
+        "url": "https://nexeo-webbrowser/search/porte",
+        "description": "Porte\n\nEn architecture et construction, une porte (XIe siècle du latin porta) est une structure (en bois ou métallique), une ouverture (une baie) dans un mur permettant d’entrer et de sortir d'un domaine, d'un édifice ou de circuler dans ses pièces. Dans l'usage familier le mot « porte » désigne seulement la menuiserie (l'« huis ») mobile permettant de fermer ce passage par sa rotation ou par son glissement et que le dormant rend stable.\n\nPour les meubles, on parle de porte de buffet, de placard, de lit-clos, etc.\n\nHistoire\nLa porte d'accès à un édifice, la porte dans un bâtiment, est définie selon des conceptions philosophico-religieuses ou anthropomorphiques ou esthétiques ou enfin rationnelles qui en font un objet architectural particulier.\nQuelques exemples : Dans certaines architectures religieuses la porte principale est orientée vers un point cardinal. Les églises, les cathédrales gothiques, ont ainsi une porte tournée à l'ouest (suivant le massif occidental). Dans l'architecture orientale, la porte qui symbolise l'accès à l'édifice peut être disposée de façon à laisser pénétrer des flux telluriques, selon la prévoyance du concepteur et cette porte peut à la réalisation être mise dans un léger biais par rapport à la façade pour correspondre aux flux ressentis. Dans des compositions d'architecture classique où on utilise la symétrie de façon impérative, de fausses portes (qui ne s'ouvrent pas) sont réalisées dans des galeries d'édifice. Et enfin la porte la plus remarquable actuellement par sa taille est celle qui permet le passage des fusées hors du hangar d'assemblage de Cap Kennedy, États-Unis.\n\nLa porte était et reste souvent un élément d'apparat qui a justifié dans certains pays un impôt sur les portes et fenêtres. « Huis » est le nom tombé en désuétude pour la porte, le « huis clos » ou porte fermée, est le souci de ne pas transmettre d'informations lors des jugements et des affaires politiques. Les « portes ouvertes » montrent le souci de transparence de la communication d'informations des organisations, Louis XIV l'avait par exemple mis en place avec l'accès du palais de Versailles qui était permis à tout le monde se présentant avec une tenue jugée correcte.\n\nDes « ouvertures » et « fermetures » équipent les habitats préhistoriques pour que les hommes se protègent des intempéries et des prédateurs, les fouilles archéologiques mettant en évidence des fosses à gauche et à droite de ces « issues » et qui contiennent des os, déchets d'alimentation.\n\nDurant l'Antiquité, les peintures des tombes égyptiennes montrent des portes en bois pour les édifices importants (avec leur symbolique associée comme le décrit le Livre des Portes), mais les maisons ordinaires, en raison du climat sec et de la rareté du bois, ont juste une ouverture fermée par une natte ou une toile. La porte d'Ishtar donne un aperçu de l'architecture babylonienne. La Grèce antique voit le développement des portiques en saillie devant la façade des bâtiments. L'arc de triomphe romain, en l'honneur d'un personnage distingué ou en mémoire de quelques événements glorieux, est généralement placé à la porte d'une ville.\n\nLe terme de porte apparaît au Moyen Âge avec les châteaux forts munis de pont-levis et de poternes intégrée aux murailles, auparavant était utilisé le terme « issue ». Principalement barricadées, elles sont équipées de serrures qui ouvrent des deux côtés avec le développement de l'urbanisation au XVe siècle. La porte préservant l'intimité d'une chambre apparaît au XVIIe siècle sous Louis XIV. Les besoins de surveillance de l'entrée ont créé les métiers de guichetier ou portier ou concierge ou huissier (de palais) ou garde de la porte. Élément du cadre de vie, la porte maintenant s'équipe d'accessoires de fonction de surveillance automatique en domotique.",
+        "content": "Porte\n\nEn architecture et construction, une porte (XIe siècle du latin porta) est une structure (en bois ou métallique), une ouverture (une baie) dans un mur permettant d’entrer et de sortir d'un domaine, d'un édifice ou de circuler dans ses pièces. Dans l'usage familier le mot « porte » désigne seulement la menuiserie (l'« huis ») mobile permettant de fermer ce passage par sa rotation ou par son glissement et que le dormant rend stable.\n\nPour les meubles, on parle de porte de buffet, de placard, de lit-clos, etc.\n\nHistoire\nLa porte d'accès à un édifice, la porte dans un bâtiment, est définie selon des conceptions philosophico-religieuses ou anthropomorphiques ou esthétiques ou enfin rationnelles qui en font un objet architectural particulier.\nQuelques exemples : Dans certaines architectures religieuses la porte principale est orientée vers un point cardinal. Les églises, les cathédrales gothiques, ont ainsi une porte tournée à l'ouest (suivant le massif occidental). Dans l'architecture orientale, la porte qui symbolise l'accès à l'édifice peut être disposée de façon à laisser pénétrer des flux telluriques, selon la prévoyance du concepteur et cette porte peut à la réalisation être mise dans un léger biais par rapport à la façade pour correspondre aux flux ressentis. Dans des compositions d'architecture classique où on utilise la symétrie de façon impérative, de fausses portes (qui ne s'ouvrent pas) sont réalisées dans des galeries d'édifice. Et enfin la porte la plus remarquable actuellement par sa taille est celle qui permet le passage des fusées hors du hangar d'assemblage de Cap Kennedy, États-Unis.\n\nLa porte était et reste souvent un élément d'apparat qui a justifié dans certains pays un impôt sur les portes et fenêtres. « Huis » est le nom tombé en désuétude pour la porte, le « huis clos » ou porte fermée, est le souci de ne pas transmettre d'informations lors des jugements et des affaires politiques. Les « portes ouvertes » montrent le souci de transparence de la communication d'informations des organisations, Louis XIV l'avait par exemple mis en place avec l'accès du palais de Versailles qui était permis à tout le monde se présentant avec une tenue jugée correcte.\n\nDes « ouvertures » et « fermetures » équipent les habitats préhistoriques pour que les hommes se protègent des intempéries et des prédateurs, les fouilles archéologiques mettant en évidence des fosses à gauche et à droite de ces « issues » et qui contiennent des os, déchets d'alimentation.\n\nDurant l'Antiquité, les peintures des tombes égyptiennes montrent des portes en bois pour les édifices importants (avec leur symbolique associée comme le décrit le Livre des Portes), mais les maisons ordinaires, en raison du climat sec et de la rareté du bois, ont juste une ouverture fermée par une natte ou une toile. La porte d'Ishtar donne un aperçu de l'architecture babylonienne. La Grèce antique voit le développement des portiques en saillie devant la façade des bâtiments. L'arc de triomphe romain, en l'honneur d'un personnage distingué ou en mémoire de quelques événements glorieux, est généralement placé à la porte d'une ville.\n\nLe terme de porte apparaît au Moyen Âge avec les châteaux forts munis de pont-levis et de poternes intégrée aux murailles, auparavant était utilisé le terme « issue ». Principalement barricadées, elles sont équipées de serrures qui ouvrent des deux côtés avec le développement de l'urbanisation au XVe siècle. La porte préservant l'intimité d'une chambre apparaît au XVIIe siècle sous Louis XIV. Les besoins de surveillance de l'entrée ont créé les métiers de guichetier ou portier ou concierge ou huissier (de palais) ou garde de la porte. Élément du cadre de vie, la porte maintenant s'équipe d'accessoires de fonction de surveillance automatique en domotique.",
+        "category": "web",
+        "tags": [
+            "porte",
+            "porta"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "door3.jpg"
+    },
+    {
+        "id": 26,
+        "title": "дверь",
+        "url": "https://nexeo-webbrowser/search/дверь",
+        "description": "ДВЕРЬ\n\nВ архитектуре и строительстве дверь (с XI века, от латинского *porta*) — это конструкция (из дерева или металла), проём (проём) в стене, обеспечивающий вход и выход из здания или перемещение внутри его помещений. В повседневном использовании слово «дверь» относится только к подвижной двери («huis»), которая закрывает этот проход, вращаясь или сдвигаясь, и которая стабилизируется рамой.\n\nВ отношении мебели мы говорим о дверце буфета, дверце шкафа, дверце кровати-ящика и т. д.\n\nИстория\nВходная дверь в здание, дверь внутри сооружения, определяется в соответствии с философско-религиозными, антропоморфными, эстетическими или рациональными концепциями, которые делают её уникальным архитектурным объектом.\n\nНекоторые примеры: В некоторых религиозных сооружениях главная дверь ориентирована по сторонам света. Например, церкви и готические соборы имеют дверь, обращенную на запад (следуя западной оси). В восточной архитектуре дверь, символизирующая вход в здание, может быть расположена таким образом, чтобы пропускать теллурические потоки, в соответствии с предвидением проектировщика. Во время строительства эта дверь может быть размещена под небольшим углом к ​​фасаду, чтобы соответствовать этим воспринимаемым потокам. В классических архитектурных композициях, где строго соблюдается симметрия, в галереи зданий включаются ложные двери (которые не открываются). Наконец, самой примечательной дверью сегодня, благодаря своим размерам, является та, которая позволяет ракетам покидать сборочный ангар на мысе Кеннеди, США.\n\nДверь была и часто остается церемониальным элементом, который в некоторых странах оправдывал налог на двери и окна. «Huis» — это ныне устаревший термин для двери; «huis clos», или закрытая дверь, относится к стремлению предотвратить передачу информации во время судебных процессов и политических дел. Концепция «открытых дверей» отражает стремление организаций к прозрачности в распространении информации. Людовик XIV, например, воплотил этот принцип, предоставив доступ в Версальский дворец любому, кто был одет подобающим образом.\n\nВ доисторических жилищах были предусмотрены отверстия и затворы для защиты от непогоды и хищников. Археологические раскопки выявили ямы слева и справа от этих «выходов», содержащие кости и пищевые отходы.\n\nВ античности на росписях египетских гробниц изображены деревянные двери важных зданий (с соответствующей символикой, как описано в «Книге ворот»). Однако в обычных домах из-за сухого климата и нехватки древесины отверстие просто закрывалось циновкой или тканью. Ворота Иштар дают представление о вавилонской архитектуре. В Древней Греции развивались портики, выступающие из фасадов зданий. Римская триумфальная арка, воздвигнутая в честь выдающейся личности или в память о каком-либо славном событии, обычно располагается у городских ворот.\n\nТермин «ворота» появился в Средневековье, когда в крепостных замках появились подъемные мосты и калитки, встроенные в стены; ранее использовался термин «ворота». Изначально забаррикадированные, ворота с развитием урбанизации в XV веке стали оснащаться замками, открывающимися с обеих сторон. Дверь, обеспечивающая приватность комнаты, появилась в XVII веке при Людовике XIV. Необходимость контролировать вход привела к появлению профессий привратника, швейцара, консьержа, дворецкого или охранника ворот. Являясь неотъемлемой частью нашего жилого пространства, дверь сегодня оснащается аксессуарами для автоматизированных функций наблюдения в системах домашней автоматизации.",
+        "content": "ДВЕРЬ\n\nВ архитектуре и строительстве дверь (с XI века, от латинского *porta*) — это конструкция (из дерева или металла), проём (проём) в стене, обеспечивающий вход и выход из здания или перемещение внутри его помещений. В повседневном использовании слово «дверь» относится только к подвижной двери («huis»), которая закрывает этот проход, вращаясь или сдвигаясь, и которая стабилизируется рамой.\n\nВ отношении мебели мы говорим о дверце буфета, дверце шкафа, дверце кровати-ящика и т. д.\n\nИстория\nВходная дверь в здание, дверь внутри сооружения, определяется в соответствии с философско-религиозными, антропоморфными, эстетическими или рациональными концепциями, которые делают её уникальным архитектурным объектом.\n\nНекоторые примеры: В некоторых религиозных сооружениях главная дверь ориентирована по сторонам света. Например, церкви и готические соборы имеют дверь, обращенную на запад (следуя западной оси). В восточной архитектуре дверь, символизирующая вход в здание, может быть расположена таким образом, чтобы пропускать теллурические потоки, в соответствии с предвидением проектировщика. Во время строительства эта дверь может быть размещена под небольшим углом к ​​фасаду, чтобы соответствовать этим воспринимаемым потокам. В классических архитектурных композициях, где строго соблюдается симметрия, в галереи зданий включаются ложные двери (которые не открываются). Наконец, самой примечательной дверью сегодня, благодаря своим размерам, является та, которая позволяет ракетам покидать сборочный ангар на мысе Кеннеди, США.\n\nДверь была и часто остается церемониальным элементом, который в некоторых странах оправдывал налог на двери и окна. «Huis» — это ныне устаревший термин для двери; «huis clos», или закрытая дверь, относится к стремлению предотвратить передачу информации во время судебных процессов и политических дел. Концепция «открытых дверей» отражает стремление организаций к прозрачности в распространении информации. Людовик XIV, например, воплотил этот принцип, предоставив доступ в Версальский дворец любому, кто был одет подобающим образом.\n\nВ доисторических жилищах были предусмотрены отверстия и затворы для защиты от непогоды и хищников. Археологические раскопки выявили ямы слева и справа от этих «выходов», содержащие кости и пищевые отходы.\n\nВ античности на росписях египетских гробниц изображены деревянные двери важных зданий (с соответствующей символикой, как описано в «Книге ворот»). Однако в обычных домах из-за сухого климата и нехватки древесины отверстие просто закрывалось циновкой или тканью. Ворота Иштар дают представление о вавилонской архитектуре. В Древней Греции развивались портики, выступающие из фасадов зданий. Римская триумфальная арка, воздвигнутая в честь выдающейся личности или в память о каком-либо славном событии, обычно располагается у городских ворот.\n\nТермин «ворота» появился в Средневековье, когда в крепостных замках появились подъемные мосты и калитки, встроенные в стены; ранее использовался термин «ворота». Изначально забаррикадированные, ворота с развитием урбанизации в XV веке стали оснащаться замками, открывающимися с обеих сторон. Дверь, обеспечивающая приватность комнаты, появилась в XVII веке при Людовике XIV. Необходимость контролировать вход привела к появлению профессий привратника, швейцара, консьержа, дворецкого или охранника ворот. Являясь неотъемлемой частью нашего жилого пространства, дверь сегодня оснащается аксессуарами для автоматизированных функций наблюдения в системах домашней автоматизации.",
+        "category": "web",
+        "tags": [
+            "строительстве",
+            "латинского",
+            "porta",
+            "дверь",
+            "века",
+            "архитектуре"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "door3.jpg"
+    },
+    {
+        "id": 27,
+        "title": "Table",
+        "url": "https://nexeo-webbrowser/search/table",
+        "description": "Table\n\nTable and Chair. Sculpture by Giancarlo Neri exhibited at Hampstead Heath (London) in August 2005. Tables, whether utilitarian or decorative, are used in homes, workplaces, and public spaces, and are generally designed as a set with matching chairs, or as part of a living room, dining room, or office furniture set.\n\nOriginally intended for domestic use, tables have found their way into the industrial world. Many companies now use lifting tables, either rectangular or U-shaped. Thanks to a system of hydraulic jacks, these tables can lift loads of up to 10 tons to a height of several meters. Some are equipped with casters, others have a tilting top, and still others fold down to just a few centimeters thick to easily accommodate a pallet.",
+        "content": "Table\n\nTable and Chair. Sculpture by Giancarlo Neri exhibited at Hampstead Heath (London) in August 2005. Tables, whether utilitarian or decorative, are used in homes, workplaces, and public spaces, and are generally designed as a set with matching chairs, or as part of a living room, dining room, or office furniture set.\n\nOriginally intended for domestic use, tables have found their way into the industrial world. Many companies now use lifting tables, either rectangular or U-shaped. Thanks to a system of hydraulic jacks, these tables can lift loads of up to 10 tons to a height of several meters. Some are equipped with casters, others have a tilting top, and still others fold down to just a few centimeters thick to easily accommodate a pallet.",
+        "category": "web",
+        "tags": [
+            "chair",
+            "exhibited",
+            "giancarlo",
+            "table",
+            "neri",
+            "sculpture"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "table3.jpg"
+    },
+    {
+        "id": 28,
+        "title": "Table",
+        "url": "https://nexeo-webbrowser/search/table-fr",
+        "description": "Table\n\nTable et chaise. Sculpture de Giancarlo Neri exposée à Hampstead Heath (Londres) en août 2005.\nLes meubles d'usage domestique, des lieux de travail et des lieux publics, les tables, utilitaires ou décoratifs, sont généralement conçus comme un ensemble avec les chaises appariées, ou les pièces d'un mobilier de salon, de salle-à-manger, de bureau…\n\nInitialement destinées à l'usage domestique, les tables ont pénétré le monde industriel. Ainsi nombre d'entreprises utilisent-elles des tables élévatrices, rectangulaires ou « en U ». Grâce à un système de vérins, ces tables permettent de soulever à plusieurs mètres de haut des charges allant jusqu'à 10 tonnes. Certaines sont munies de roulettes, d'autres ont un plateau basculant, d'autres enfin se répondent jusqu'à seulement quelques centimètres d'épaisseur afin de pouvoir y déposer librement une palette.",
+        "content": "Table\n\nTable et chaise. Sculpture de Giancarlo Neri exposée à Hampstead Heath (Londres) en août 2005.\nLes meubles d'usage domestique, des lieux de travail et des lieux publics, les tables, utilitaires ou décoratifs, sont généralement conçus comme un ensemble avec les chaises appariées, ou les pièces d'un mobilier de salon, de salle-à-manger, de bureau…\n\nInitialement destinées à l'usage domestique, les tables ont pénétré le monde industriel. Ainsi nombre d'entreprises utilisent-elles des tables élévatrices, rectangulaires ou « en U ». Grâce à un système de vérins, ces tables permettent de soulever à plusieurs mètres de haut des charges allant jusqu'à 10 tonnes. Certaines sont munies de roulettes, d'autres ont un plateau basculant, d'autres enfin se répondent jusqu'à seulement quelques centimètres d'épaisseur afin de pouvoir y déposer librement une palette.",
+        "category": "web",
+        "tags": [
+            "fr table",
+            "table fr",
+            "exposee",
+            "giancarlo",
+            "chaise",
+            "table francais",
+            "table",
+            "neri",
+            "sculpture"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "table2.jpg"
+    },
+    {
+        "id": 29,
+        "title": "стол",
+        "url": "https://nexeo-webbrowser/search/стол",
+        "description": "стол\n\nСтол и шезлонг. Скульптура Джанкарло Нери была выставлена ​​в Хэмпстед-Хит (Лондон) в начале 2005 года.\nДомашние предметы домашнего обихода, места труда и общественные места, столы, утилиты или декоративные элементы, все это представляет собой ансамбль с шезлонгами, или предметы мобильного салона, зала, бюро…\n\nПервоначально предназначенные для домашнего использования, таблицы входят в промышленный мир. В большинстве случаев используются подъемные, прямоугольные или «в U» столы. В системе верификации эти столы позволяют хранить дополнительные метры высоких зарядов весом 10 тонн. Некоторые люди играют в рулетку, другие на плато, другие находят ответ только на несколько сантиметров в руке и кладут одну палитру.",
+        "content": "стол\n\nСтол и шезлонг. Скульптура Джанкарло Нери была выставлена ​​в Хэмпстед-Хит (Лондон) в начале 2005 года.\nДомашние предметы домашнего обихода, места труда и общественные места, столы, утилиты или декоративные элементы, все это представляет собой ансамбль с шезлонгами, или предметы мобильного салона, зала, бюро…\n\nПервоначально предназначенные для домашнего использования, таблицы входят в промышленный мир. В большинстве случаев используются подъемные, прямоугольные или «в U» столы. В системе верификации эти столы позволяют хранить дополнительные метры высоких зарядов весом 10 тонн. Некоторые люди играют в рулетку, другие на плато, другие находят ответ только на несколько сантиметров в руке и кладут одну палитру.",
+        "category": "web",
+        "tags": [
+            "стол"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "table1.jpg"
+    },
+    {
+        "id": 30,
+        "title": "Table",
+        "url": "https://nexeo-webbrowser/image/table",
+        "description": "Table",
+        "content": "Table",
+        "category": "images",
+        "tags": [
+            "table"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "table1.jpg"
+    },
+    {
+        "id": 31,
+        "title": "стол",
+        "url": "https://nexeo-webbrowser/image/стол",
+        "description": "стол",
+        "content": "стол",
+        "category": "images",
+        "tags": [
+            "стол"
+        ],
+        "date": "2026-05-21",
+        "author": "Global Web Crawler",
+        "image": "table4.jpg"
+    }
+]

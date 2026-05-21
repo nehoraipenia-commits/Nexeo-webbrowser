@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER PENGUIN RUNNER</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050509; /* Dark background */
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        #gameContainer {
+            position: relative;
+        }
+
+        canvas {
+            border: 2px solid #00f2fe; /* Neon Blue border */
+            box-shadow: 0 0 15px #00f2fe;
+            background-color: #000;
+        }
+
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: #4facfe; /* Lighter Neon Blue */
+            pointer-events: none;
+        }
+
+        #controlsInfo {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gameContainer">
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <div id="ui">Score: <span id="score">0</span></div>
+    <div id="controlsInfo">Press SPACE to Jump / CLICK to Jump (Mobile)</div>
+</div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreElement = document.getElementById('score');
+
+    // Game State
+    let score = 0;
+    let isGameOver = false;
+    let gameSpeed = 5;
+
+    // Penguin Object
+    const penguin = {
+        x: 50,
+        y: canvas.height - 70, // Start just above ground
+        width: 40,
+        height: 60,
+        vy: 0,
+        gravity: 0.8,
+        jumpPower: -15,
+        color: '#00f2fe', // Neon Blue
+        draw: function() {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+
+            // Simple Penguin shape detailing (eye, beak)
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(this.x + 25, this.y + 15, 5, 5); // Eye
+            ctx.fillStyle = '#ff9f43'; // Orange
+            ctx.fillRect(this.x + 35, this.y + 20, 10, 5); // Beak
+        },
+        jump: function() {
+            if (this.y === canvas.height - this.height - 10) { // Check if on ground
+                this.vy = this.jumpPower;
+            }
+        },
+        update: function() {
+            this.vy += this.gravity;
+            this.y += this.vy;
+
+            // Ground collision
+            if (this.y > canvas.height - this.height - 10) {
+                this.y = canvas.height - this.height - 10;
+                this.vy = 0;
+            }
+        }
+    };
+
+    // Obstacles (Spikes)
+    let obstacles = [];
+    class Obstacle {
+        constructor() {
+            this.width = 30;
+            this.height = Math.random() * 50 + 30;
+            this.x = canvas.width;
+            this.y = canvas.height - this.height - 10;
+            this.color = '#ff0055'; // Neon Red/Pink
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+        update() {
+            this.x -= gameSpeed;
+        }
+    }
+
+    // Input Handling
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !isGameOver) {
+            penguin.jump();
+        }
+        if (isGameOver && e.code === 'Space') {
+            resetGame();
+        }
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+        if (!isGameOver) {
+            penguin.jump();
+        }
+        if (isGameOver) {
+            resetGame();
+        }
+    });
+
+    // Main Game Loop
+    function gameLoop() {
+        if (isGameOver) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw Ground
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+
+        // Update & Draw Penguin
+        penguin.update();
+        penguin.draw();
+
+        // Manage Obstacles
+        if (Math.random() < 0.02) { // Random obstacle spawn
+            obstacles.push(new Obstacle());
+        }
+
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            obstacles[i].update();
+            obstacles[i].draw();
+
+            // Collision detection
+            if (
+                penguin.x < obstacles[i].x + obstacles[i].width &&
+                penguin.x + penguin.width > obstacles[i].x &&
+                penguin.y < obstacles[i].y + obstacles[i].height &&
+                penguin.y + penguin.height > obstacles[i].y
+            ) {
+                gameOver();
+            }
+
+            // Remove off-screen obstacles
+            if (obstacles[i].x + obstacles[i].width < 0) {
+                obstacles.splice(i, 1);
+                score++;
+                scoreElement.innerText = score;
+                if (score % 10 === 0) { // Speed up every 10 points
+                    gameSpeed += 0.5;
+                }
+            }
+        }
+
+        requestAnimationFrame(gameLoop);
+    }
+
+    function gameOver() {
+        isGameOver = true;
+        ctx.fillStyle = 'rgba(0,0,0,0.8)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#fff';
+        ctx.font = '40px Courier New';
+        ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
+        ctx.font = '20px Courier New';
+        ctx.fillText('Press SPACE or CLICK to Restart', canvas.width / 2, canvas.height / 2 + 20);
+    }
+
+    function resetGame() {
+        score = 0;
+        scoreElement.innerText = score;
+        isGameOver = false;
+        gameSpeed = 5;
+        obstacles = [];
+        penguin.y = canvas.height - 70;
+        penguin.vy = 0;
+        gameLoop();
+    }
+
+    // Start
+    gameLoop();
+
+</script>
+</body>
+</html>

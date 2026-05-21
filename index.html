@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexeo - Intelligent Search Engine</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#d9e2ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .search-highlight {
+            background-color: rgba(254, 240, 138, 0.6);
+            border-radius: 4px;
+            padding: 0 2px;
+        }
+        .dark .search-highlight {
+            background-color: rgba(133, 77, 14, 0.6);
+            color: #fef08a;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 text-sm">
+        <span id="toast-message">Notification</span>
+    </div>
+
+    <!-- HEADER / NAVIGATION (Hidden on home page, visible on results view) -->
+    <header id="header-search-container" class="hidden border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-30 transition-all">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <!-- Logo and Search input -->
+            <div class="flex items-center flex-1 gap-6">
+                <a href="#" onclick="goHome()" class="flex items-center space-x-2 shrink-0">
+                    <div class="w-9 h-9 bg-gradient-to-tr from-brand-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-compass text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-wider bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">Nexeo webbrowser</span>
+                </a>
+                
+                <!-- Header Search Input -->
+                <div class="relative flex-1 max-w-2xl">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="header-search-input" 
+                        oninput="handleSearchInput(event, 'header-suggestions')"
+                        onkeydown="if(event.key === 'Enter') triggerSearch(this.value)"
+                        placeholder="Search All Web, images, news..." 
+                        class="w-full pl-10 pr-12 py-2 bg-slate-100 focus:bg-white dark:bg-slate-800 dark:focus:bg-slate-800/80 border border-transparent focus:border-brand-500 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition-all"
+                    >
+                    <button id="header-clear-btn" onclick="clearSearch('header-search-input')" class="hidden absolute inset-y-0 right-10 px-2 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        <i class="fa-solid fa-circle-xmark text-sm"></i>
+                    </button>
+                    <button onclick="simulateVoiceSearch('header-search-input')" class="absolute inset-y-0 right-0 px-3 flex items-center text-brand-500 hover:text-brand-600">
+                        <i class="fa-solid fa-microphone text-sm"></i>
+                    </button>
+
+                    <!-- Suggestions box -->
+                    <div id="header-suggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl overflow-hidden z-50"></div>
+                </div>
+            </div>
+
+            <!-- Actions and Theme toggler -->
+            <div class="flex items-center justify-end space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 flex items-center justify-center transition-colors">
+                    <i id="theme-icon" class="fa-solid fa-moon text-slate-600 dark:text-slate-300"></i>
+                </button>
+                <button onclick="openTab('crawler')" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:hover:bg-indigo-900/40 dark:text-indigo-400 rounded-xl text-xs font-semibold flex items-center space-x-2 transition-all">
+                    <i class="fa-solid fa-spider"></i>
+                    <span>Crawler Console</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- SEARCH TABS -->
+        <div class="max-w-7xl mx-auto px-4 border-t border-slate-100 dark:border-slate-800/60">
+            <nav class="flex space-x-6 text-sm overflow-x-auto custom-scrollbar">
+                <button onclick="switchTab('web')" id="tab-web" class="py-3 border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 font-semibold flex items-center space-x-2 shrink-0 transition-all">
+                    <i class="fa-solid fa-globe text-xs"></i>
+                    <span>All the Web</span>
+                </button>
+                <button onclick="switchTab('images')" id="tab-images" class="py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium flex items-center space-x-2 shrink-0 transition-all">
+                    <i class="fa-solid fa-image text-xs"></i>
+                    <span>Images</span>
+                </button>
+                <button onclick="switchTab('news')" id="tab-news" class="py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium flex items-center space-x-2 shrink-0 transition-all">
+                    <i class="fa-solid fa-newspaper text-xs"></i>
+                    <span>News</span>
+                </button>
+                <button onclick="switchTab('crawler')" id="tab-crawler" class="py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium flex items-center space-x-2 shrink-0 transition-all">
+                    <i class="fa-solid fa-spider text-xs"></i>
+                    <span>Indexer & Crawler</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main class="flex-grow flex flex-col">
+
+        <!-- 1. LANDING/HOME VIEW -->
+        <div id="home-view" class="flex-grow flex flex-col justify-center items-center px-4 max-w-4xl mx-auto w-full py-12">
+            <!-- Header Controls on Home -->
+            <div class="absolute top-5 right-5 flex items-center space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center transition-colors">
+                    <i id="home-theme-icon" class="fa-solid fa-moon text-slate-600 dark:text-slate-300"></i>
+                </button>
+                <button onclick="switchTab('crawler'); document.getElementById('home-view').classList.add('hidden'); document.getElementById('results-view').classList.remove('hidden'); document.getElementById('header-search-container').classList.remove('hidden');" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl flex items-center space-x-2 shadow-lg shadow-indigo-500/20 transition-all">
+                    <i class="fa-solid fa-spider"></i>
+                    <span>Crawler Console</span>
+                </button>
+            </div>
+
+            <!-- Big Logo -->
+            <div class="text-center mb-8">
+                <div class="inline-flex w-20 h-20 bg-gradient-to-tr from-brand-600 to-indigo-600 rounded-2xl items-center justify-center text-white shadow-xl shadow-brand-500/20 mb-4">
+                    <i class="fa-solid fa-compass text-4xl"></i>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-brand-600 via-indigo-600 to-indigo-500 bg-clip-text text-transparent">Nexeo webbrowser</h1>
+                
+                
+                <div id="api-status-badge" class="inline-flex mt-4 items-center space-x-1 px-2.5 py-1 bg-emerald-50 text-emerald-600 border border-emerald-100 dark:bg-emerald-950/30 dark:border-emerald-900/40 dark:text-emerald-400 text-xs font-medium rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span id="api-status-text">Local Mode (Offline Simulator)</span>
+                </div>
+            </div>
+
+            <!-- Main Home Search bar -->
+            <div class="w-full max-w-2xl relative mb-6">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass text-base"></i>
+                </div>
+                <input 
+                    type="text" 
+                    id="home-search-input" 
+                    oninput="handleSearchInput(event, 'home-suggestions')"
+                    onkeydown="if(event.key === 'Enter') triggerSearch(this.value)"
+                    placeholder="Type your search here..." 
+                    class="w-full pl-12 pr-28 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 focus:border-brand-500 rounded-2xl shadow-xl hover:shadow-2xl text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-500/10 transition-all text-base"
+                >
+                <div class="absolute inset-y-0 right-2 flex items-center space-x-1">
+                    <button id="home-clear-btn" onclick="clearSearch('home-search-input')" class="hidden p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        <i class="fa-solid fa-circle-xmark text-sm"></i>
+                    </button>
+                    <button onclick="simulateVoiceSearch('home-search-input')" class="p-2 text-slate-400 hover:text-brand-500 transition-colors">
+                        <i class="fa-solid fa-microphone text-sm"></i>
+                    </button>
+                    <button onclick="triggerSearch(document.getElementById('home-search-input').value)" class="bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md shadow-brand-500/10 transition-all">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Suggestions box -->
+                <div id="home-suggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-50"></div>
+            </div>
+
+            <!-- Short Stats & Trends -->
+            <div class="w-full max-w-2xl mt-4">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center md:text-left">Popular keywords</div>
+                <div id="popular-pills" class="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
+                    <!-- Dynamically generated pills -->
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 border-t border-slate-200/60 dark:border-slate-800/60 pt-6">
+                    <div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center space-x-2">
+                            <i class="fa-solid fa-arrow-trend-up text-indigo-500"></i>
+                            <span>Trending Searches</span>
+                        </div>
+                        <ul id="trending-list" class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <!-- Dynamic trend items -->
+                        </ul>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Database Status</span>
+                            <div class="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-1" id="stat-total-pages">0</div>
+                            <p class="text-xs text-slate-400 mt-1">Indexed web pages ready to be queried.</p>
+                        </div>
+                        <div class="text-[10px] text-slate-400 mt-2">
+                            Nexeo : AI, Web, Games
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. SEARCH RESULTS VIEW -->
+        <div id="results-view" class="hidden flex-grow max-w-7xl mx-auto w-full px-4 py-6">
+            <!-- Filter toolbar -->
+            <div id="results-toolbar" class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800/60 pb-4 mb-6">
+                <!-- Count and timing -->
+                <div class="text-sm text-slate-500 dark:text-slate-400">
+                    About <span id="results-count" class="font-bold text-slate-800 dark:text-slate-200">0</span> results found in <span id="results-time" class="font-bold text-slate-800 dark:text-slate-200">0.0000</span> seconds.
+                </div>
+                
+                <!-- Quick filters -->
+                <div id="quick-filters" class="flex items-center space-x-3 text-xs">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="text-slate-400">Sort by:</span>
+                        <select id="filter-sort" onchange="runSearchQuery()" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-700 dark:text-slate-300 outline-none focus:ring-1 focus:ring-brand-500">
+                            <option value="relevance">Relevance Score</option>
+                            <option value="title_asc">Title (A-Z)</option>
+                            <option value="newest">Latest Indexed</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="text-slate-400">Time range:</span>
+                        <select id="filter-time" onchange="runSearchQuery()" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-700 dark:text-slate-300 outline-none focus:ring-1 focus:ring-brand-500">
+                            <option value="all">Anytime</option>
+                            <option value="recent">Recent (2025/2026)</option>
+                            <option value="archived">Archived Content</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spellchecker recommendation (Did you mean) -->
+            <div id="did-you-mean-container" class="hidden mb-6 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200/50 dark:border-amber-900/30 rounded-xl flex items-center space-x-2 text-sm text-amber-800 dark:text-amber-300">
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
+                <span>Did you mean:</span>
+                <button id="spellcheck-suggestion-btn" onclick="applySpellcheckCorrection()" class="font-bold underline hover:text-amber-600 dark:hover:text-amber-200 text-left transition-colors"></button>
+            </div>
+
+            <!-- Two Column Layout (Results / Knowledge sidebar) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Column 1 & 2: Main Search Results -->
+                <div class="lg:col-span-2 space-y-6" id="search-results-list">
+                    <!-- Results & Explanation Block goes here -->
+                </div>
+
+                <!-- Column 3: Intelligent Knowledge Graph Panel -->
+                <div class="space-y-6">
+                    <div id="knowledge-graph-card" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm sticky top-28">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-brand-50 text-brand-600 dark:bg-brand-950/40 dark:text-brand-400 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-brain text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-none">Knowledge Block</h3>
+                                <span class="text-[10px] text-slate-400">Nexeo Natural NLP</span>
+                            </div>
+                        </div>
+
+                        <div id="kg-image-container" class="hidden w-full h-36 rounded-xl overflow-hidden bg-slate-100 mb-4 border border-slate-200/40">
+                            <img id="kg-image" src="" alt="Subject Preview" class="w-full h-full object-cover">
+                        </div>
+
+                        <h4 id="kg-title" class="text-xl font-extrabold text-slate-800 dark:text-slate-100">Topic</h4>
+                        <span id="kg-subtitle" class="text-xs text-indigo-500 font-semibold uppercase tracking-wider">Category</span>
+                        
+                        <p id="kg-description" class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">Detailed NLP generated synthesis summary...</p>
+                        
+                        <!-- Attribute grid -->
+                        <div id="kg-attributes" class="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+                            <!-- Dynamic parameters -->
+                        </div>
+
+                        <!-- Source/Link footer -->
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                            <span>Index status: Active</span>
+                            <a id="kg-link" href="#" target="_blank" class="text-brand-500 hover:underline flex items-center space-x-1">
+                                <span>Preview Page</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. WEB CRAWLER & SIMULATOR CONSOLE TAB -->
+        <div id="crawler-view" class="hidden max-w-5xl mx-auto w-full px-4 py-6">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <!-- Column 1: Crawler inputs -->
+                <div class="lg:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2.5 pb-2 border-b border-slate-100 dark:border-slate-800">
+                        <i class="fa-solid fa-spider text-brand-500 text-lg"></i>
+                        <div>
+                            <h2 class="font-bold text-slate-800 dark:text-slate-100">Index Webpage</h2>
+                            <p class="text-xs text-slate-400">Submit new metadata to index database</p>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Page Title <span class="text-rose-500">*</span></label>
+                        <input type="text" id="crawl-title" placeholder="e.g. Complete Python Flask Deployment Guide" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl">
+                    </div>
+
+                    <!-- URL -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Web Address URL <span class="text-rose-500">*</span></label>
+                        <input type="text" id="crawl-url" placeholder="https://mycodeblog.com/python-flask-tips" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl">
+                    </div>
+
+                    <!-- Category & Custom image -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Category <span class="text-rose-500">*</span></label>
+                            <select id="crawl-category" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl">
+                                <option value="web">Standard Web</option>
+                                <option value="images">Image Search</option>
+                                <option value="news">News Article</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Image Artwork URL</label>
+                            <input type="text" id="crawl-image" placeholder="Image URL (Unsplash or direct)" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl">
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Tags (Comma-separated)</label>
+                        <input type="text" id="crawl-tags" placeholder="python, coding, backend" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl">
+                    </div>
+
+                    <!-- Content -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Document Body / Content Description <span class="text-rose-500">*</span></label>
+                        <textarea id="crawl-content" rows="4" placeholder="Enter or paste the main paragraph details of the site here..." class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-brand-500 focus:outline-none rounded-xl resize-none"></textarea>
+                    </div>
+
+                    <button onclick="startCrawlingProcess()" class="w-full py-3 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-lg shadow-brand-500/20 flex items-center justify-center space-x-2 transition-all">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Index Webpage Now</span>
+                    </button>
+                </div>
+
+                <!-- Column 2: Terminal Output simulator -->
+                <div class="lg:col-span-3 bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-inner flex flex-col justify-between min-h-[450px]">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-800/80">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            <span class="text-slate-400 text-xs font-mono ml-2">invenio-crawler-shell.sh</span>
+                        </div>
+                        <button onclick="clearConsole()" class="text-slate-500 hover:text-slate-300 transition-colors text-xs">
+                            <i class="fa-solid fa-trash-can mr-1"></i> Clear Shell
+                        </button>
+                    </div>
+
+                    <!-- Terminal area -->
+                    <div id="crawler-terminal" class="flex-grow font-mono text-xs overflow-y-auto custom-scrollbar p-3 space-y-2 text-slate-300 max-h-[350px]">
+                        <div class="text-slate-500">// Crawler shell waiting for indexing submissions...</div>
+                        <div class="text-slate-500">// New entities will be persistently stored inside the Flask schema.</div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                        <span>Target Schema: Python JSON / DB file</span>
+                        <span>v1.26 - Flask Server Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- LIVE WEBSITE VIEWER MODAL (IFRAME SIMULATOR) -->
+    <div id="viewer-modal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-5xl h-[85vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800">
+            <!-- Mock browser bar -->
+            <div class="bg-slate-100 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between gap-4">
+                <div class="flex items-center space-x-2 shrink-0">
+                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                </div>
+                <!-- URL Field display -->
+                <div class="flex-1 max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-1 rounded-lg text-xs flex items-center space-x-2">
+                    <i class="fa-solid fa-lock text-emerald-500"></i>
+                    <span id="modal-browser-url" class="text-slate-600 dark:text-slate-300 truncate font-mono">https://www.nexeo.org</span>
+                </div>
+                <!-- Control buttons -->
+                <button onclick="closeViewer()" class="w-7 h-7 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-300 transition-colors">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <!-- Browser Body -->
+            <div class="flex-grow overflow-y-auto custom-scrollbar p-8 bg-white dark:bg-slate-950">
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <span id="viewer-badge" class="px-2.5 py-1 bg-brand-50 text-brand-600 dark:bg-brand-950/40 dark:text-brand-400 text-xs font-bold rounded-lg uppercase tracking-wider">Category</span>
+                    <h1 id="viewer-title" class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-slate-100 leading-tight">Document Title</h1>
+                    <div id="viewer-meta" class="text-xs text-slate-400 flex flex-wrap gap-4 pt-2 border-b border-slate-100 dark:border-slate-800/80 pb-4">
+                        <span>Database Document Preview</span>
+                        <span id="viewer-date">Indexed date: --</span>
+                    </div>
+                    <!-- Big Header Artwork if present inside preview -->
+                    <div id="viewer-art-container" class="w-full h-64 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hidden">
+                        <img id="viewer-art" src="" alt="Web Art" class="w-full h-full object-cover">
+                    </div>
+                    <p id="viewer-content" class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base whitespace-pre-wrap">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-6 bg-white dark:bg-slate-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div>
+                © 2026 Nexeo<strong class="text-slate-600 dark:text-slate-300"></strong>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" onclick="goHome()" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors">Home</a>
+                <a href="#" onclick="openTab('crawler')" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors">Indexer Console</a>
+                <a href="https://google.com" target="_blank" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors flex items-center gap-1">
+                    <i class="fa-brands fa-google"></i> Google
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGICAL APP JAVASCRIPT -->
+    <script>
+        /* Database fallback used if Offline / Python backend is not running */
+        const defaultDatabase = [
+            {
+                id: 1,
+                title: "Artificial Intelligence and its Future in 2026",
+                url: "https://www.future-tech.org/artificial-intelligence-2026",
+                content: "What are the major advances in generative AI this year? Full analysis of LLMs, software engineering automation, and autonomous agent workflows in daily life.",
+                description: "What are the major advances in generative AI this year? Full analysis of LLMs, software engineering automation, and autonomous agent workflows in daily life.",
+                category: "web",
+                tags: ["ai", "tech", "future", "artificial intelligence", "agent", "llm"],
+                date: "2026-04-10",
+                author: "Sarah Laporte",
+                image: "https://images.unsplash.com/photo-1677442136019-21780efad99a"
+            },
+            {
+                id: 2,
+                title: "Traditional French Crêpes Recipe and Secret Cooking Tips",
+                url: "https://www.breizh-cuisine.com/traditional-crepes-recipe",
+                content: "Discover the secret to a light, delicious French crêpe batter. Professional pastry chef tips on selecting fine flour, butter seasoning, and cooking times.",
+                description: "Discover the secret to a light, delicious French crêpe batter. Professional pastry chef tips on selecting fine flour, butter seasoning, and cooking times.",
+                category: "web",
+                tags: ["recipe", "cooking", "crepes", "french", "food", "dessert"],
+                date: "2025-08-15",
+                author: "Jean-Yves Le Gall",
+                image: "https://images.unsplash.com/photo-1519676867240-f03562e64548"
+            },
+            {
+                id: 3,
+                title: "Mars Exploration: NASA Confirms Ancient River Networks",
+                url: "https://www.space-mag.com/nasa-mars-rivers-discovery",
+                content: "The Perseverance rover has gathered critical sediment samples proving that a vast, complex hydrological network existed on Mars billions of years ago.",
+                description: "The Perseverance rover has gathered critical sediment samples proving that a vast, complex hydrological network existed on Mars billions of years ago.",
+                category: "news",
+                tags: ["mars", "nasa", "space", "science", "astronomy", "perseverance"],
+                date: "2026-05-12",
+                author: "Dr. Pierre Valo",
+                image: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9"
+            },
+            {
+                id: 4,
+                title: "Mastering Modern JavaScript Quickly in 2026",
+                url: "https://www.codeacademy.com/courses/modern-javascript-es15",
+                content: "Learn JavaScript from scratch. Step-by-step guide exploring ES15 features, asynchronous operations with async/await, and browser-side reactive frameworks.",
+                description: "Learn JavaScript from scratch. Step-by-step guide exploring ES15 features, asynchronous operations with async/await, and browser-side reactive frameworks.",
+                category: "web",
+                tags: ["javascript", "code", "development", "web", "programming", "es15"],
+                date: "2026-01-20",
+                author: "Marc Dupont",
+                image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a"
+            },
+            {
+                id: 5,
+                title: "History: The Night of August 4, 1789 and the End of Privileges",
+                url: "https://www.history-france.org/revolution/night-august-4-1789",
+                content: "A comprehensive historical study of the National Assembly session that abolished feudal rights and privileges, marking a major turning point of the French Revolution.",
+                description: "A comprehensive historical study of the National Assembly session that abolished feudal rights and privileges, marking a major turning point of the French Revolution.",
+                category: "web",
+                tags: ["history", "france", "revolution", "archives", "culture"],
+                date: "2023-11-04",
+                author: "Elise Martin",
+                image: "https://images.unsplash.com/photo-1513151233558-d860c5398176"
+            },
+            {
+                id: 6,
+                title: "Top 10 Most Beautiful Hiking Trails on the French Riviera",
+                url: "https://www.provence-escape.com/hiking-french-riviera-esterel",
+                content: "From the red volcanic cliffs of the Esterel to the coastal paths of Saint-Jean-Cap-Ferrat, plan your next nature excursion between sea and mountains.",
+                description: "From the red volcanic cliffs of the Esterel to the coastal paths of Saint-Jean-Cap-Ferrat, plan your next nature excursion between sea and mountains.",
+                category: "web",
+                tags: ["french riviera", "hiking", "nature", "travel", "provence", "sport"],
+                date: "2025-06-02",
+                author: "Julie Brunet",
+                image: "https://images.unsplash.com/photo-1533105079780-92b9be482077"
+            }
+        ];
+
+        /* Global Application State */
+        const state = {
+            currentTab: 'web',
+            query: '',
+            results: [],
+            database: [...defaultDatabase],
+            spellcheckedQuery: null,
+            searchTime: 0,
+            voiceInterval: null,
+            useAPI: window.location.port === "5000" || (window.location.hostname !== "localhost" && !window.location.hostname.includes("github"))
+        };
+
+        /* ON WINDOW LOAD INITIALIZATION */
+        window.onload = function() {
+            const statusBadge = document.getElementById('api-status-badge');
+            const statusText = document.getElementById('api-status-text');
+
+            if (state.useAPI) {
+                console.log("🚀 Connected to Flask Search Backend!");
+                statusBadge.className = "inline-flex mt-4 items-center space-x-1 px-2.5 py-1 bg-indigo-50 text-indigo-600 border border-indigo-100 dark:bg-indigo-950/30 dark:border-indigo-900/40 dark:text-indigo-400 text-xs font-medium rounded-full";
+                statusText.textContent = "Connected to Nexeo";
+                fetchStatsFromBackend();
+            } else {
+                console.log("ℹ️ Running in Offline Simulation Mode.");
+                statusBadge.className = "inline-flex mt-4 items-center space-x-1 px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-100 dark:bg-amber-950/30 dark:border-amber-900/40 dark:text-amber-400 text-xs font-medium rounded-full";
+                statusText.textContent = "Local Mode (Simulation JS)";
+                document.getElementById('stat-total-pages').textContent = state.database.length;
+            }
+
+            initTheme();
+            renderPopularPills();
+            renderTrendingList();
+        };
+
+        /* THEME MANAGEMENT (Light / Dark) */
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                updateThemeIcons(true);
+            } else {
+                document.documentElement.classList.remove('dark');
+                updateThemeIcons(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+            updateThemeIcons(isDark);
+        }
+
+        function updateThemeIcons(isDark) {
+            const headerIcon = document.getElementById('theme-icon');
+            const homeIcon = document.getElementById('home-theme-icon');
+            if (isDark) {
+                headerIcon.className = "fa-solid fa-sun text-amber-400";
+                homeIcon.className = "fa-solid fa-sun text-amber-400";
+            } else {
+                headerIcon.className = "fa-solid fa-moon text-slate-600";
+                homeIcon.className = "fa-solid fa-moon text-slate-600";
+            }
+        }
+
+        /* SEARCH ENGINE CORE / TRIGGER LOGIC */
+        async function triggerSearch(searchQuery) {
+            const cleanedQuery = searchQuery.trim();
+            if (cleanedQuery.length === 0) return;
+
+            state.query = cleanedQuery;
+            
+            document.getElementById('home-search-input').value = cleanedQuery;
+            document.getElementById('header-search-input').value = cleanedQuery;
+
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('results-view').classList.remove('hidden');
+            document.getElementById('header-search-container').classList.remove('hidden');
+
+            if (state.useAPI) {
+                try {
+                    const sort = document.getElementById('filter-sort').value;
+                    const time = document.getElementById('filter-time').value;
+                    
+                    const res = await fetch(`/api/search?q=${encodeURIComponent(cleanedQuery)}&category=${state.currentTab}&sort=${sort}&time=${time}`);
+                    const data = await res.json();
+                    
+                    state.results = data.results;
+                    state.searchTime = data.searchTime;
+                    state.spellcheckedQuery = data.spellcheck;
+                    
+                    const notice = document.getElementById('did-you-mean-container');
+                    if (data.spellcheck) {
+                        document.getElementById('spellcheck-suggestion-btn').textContent = data.spellcheck;
+                        notice.classList.remove('hidden');
+                    } else {
+                        notice.classList.add('hidden');
+                    }
+                } catch (err) {
+                    console.error("Backend connection failure:", err);
+                    showToast("❌ Unable to connect to Flask server. Switched to fallback.");
+                    runOfflineSearchFallback();
+                }
+            } else {
+                runOfflineSearchFallback();
+            }
+
+            renderSearchResults();
+            renderKnowledgeGraph();
+        }
+
+        function runSearchQuery() {
+            triggerSearch(state.query);
+        }
+
+        /* OFFLINE SEARCH FALLBACK */
+        function runOfflineSearchFallback() {
+            const t0 = performance.now();
+            const queryWords = state.query.toLowerCase().split(/\s+/);
+            
+            const matched = state.database.map(doc => {
+                let score = 0;
+                
+                // Filtrer selon la catégorie
+                if (state.currentTab === 'web') {
+                    if (doc.category !== 'web' && doc.category !== 'news') return { doc, score: -1 };
+                } else {
+                    if (doc.category !== state.currentTab) return { doc, score: -1 };
+                }
+
+                const titleLower = doc.title.toLowerCase();
+                const contentLower = (doc.content || doc.description || '').toLowerCase();
+                const urlLower = doc.url.toLowerCase();
+
+                queryWords.forEach(word => {
+                    if (titleLower.includes(word)) score += 15;
+                    if (contentLower.includes(word)) score += 4;
+                    if (urlLower.includes(word)) score += 8;
+                    (doc.tags || []).forEach(tag => {
+                        if (tag.toLowerCase().includes(word)) score += 10;
+                    });
+                });
+
+                return { doc, score };
+            });
+
+            const sort = document.getElementById('filter-sort').value;
+            let finalResults = matched.filter(item => item.score > 0);
+
+            if (sort === "title_asc") {
+                finalResults.sort((a, b) => a.doc.title.localeCompare(b.doc.title));
+            } else if (sort === "newest") {
+                finalResults.sort((a, b) => new Date(b.doc.date) - new Date(a.doc.date));
+            } else {
+                finalResults.sort((a, b) => b.score - a.score);
+            }
+
+            state.results = finalResults.map(item => item.doc);
+            const t1 = performance.now();
+            state.searchTime = ((t1 - t0) / 1000).toFixed(4);
+
+            simulateOfflineSpellcheck();
+        }
+
+        async function fetchStatsFromBackend() {
+            try {
+                const res = await fetch(`/api/search?q=`);
+                const data = await res.json();
+                document.getElementById('stat-total-pages').textContent = data.totalResults || state.database.length;
+            } catch(e) {}
+        }
+
+        /* AUTO-COMPLETION */
+        async function handleSearchInput(event, suggestionBoxId) {
+            const rawQuery = event.target.value;
+            const query = rawQuery.trim().toLowerCase();
+            const suggestionBox = document.getElementById(suggestionBoxId);
+            
+            const clearBtn = event.target.id === 'home-search-input' 
+                ? document.getElementById('home-clear-btn') 
+                : document.getElementById('header-clear-btn');
+                
+            if (rawQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            if (query.length === 0) {
+                suggestionBox.classList.add('hidden');
+                return;
+            }
+
+            if (state.useAPI) {
+                try {
+                    const res = await fetch(`/api/suggest?q=${encodeURIComponent(query)}`);
+                    const suggestions = await res.json();
+                    
+                    if (suggestions.length > 0) {
+                        renderSuggestionsHTML(suggestions, rawQuery, suggestionBox, event.target);
+                    } else {
+                        suggestionBox.classList.add('hidden');
+                    }
+                } catch (e) {
+                    suggestionBox.classList.add('hidden');
+                }
+            } else {
+                const localSuggestions = [];
+                state.database.forEach(doc => {
+                    const titleWords = doc.title.split(/\s+/);
+                    titleWords.forEach(word => {
+                        const cleaned = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
+                        if (cleaned.startsWith(query) && !localSuggestions.includes(cleaned) && cleaned.length > 2) {
+                            localSuggestions.push(cleaned);
+                        }
+                    });
+                });
+                const top5 = localSuggestions.slice(0, 5);
+                if (top5.length > 0) {
+                    renderSuggestionsHTML(top5, rawQuery, suggestionBox, event.target);
+                } else {
+                    suggestionBox.classList.add('hidden');
+                }
+            }
+        }
+
+        function renderSuggestionsHTML(suggestions, query, containerElement, inputElement) {
+            containerElement.innerHTML = '';
+            suggestions.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer flex items-center space-x-3 text-sm transition-colors duration-150";
+                div.innerHTML = `
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <span class="font-medium text-slate-800 dark:text-slate-200">${highlightText(item, query)}</span>
+                `;
+                div.onclick = () => {
+                    inputElement.value = item;
+                    containerElement.classList.add('hidden');
+                    triggerSearch(item);
+                };
+                containerElement.appendChild(div);
+            });
+            containerElement.classList.remove('hidden');
+        }
+
+        /* RENDU VISUEL DES RESULTATS */
+        function renderSearchResults() {
+            const listContainer = document.getElementById('search-results-list');
+            listContainer.innerHTML = '';
+
+            document.getElementById('results-count').textContent = state.results.length;
+            document.getElementById('results-time').textContent = state.searchTime;
+
+            // 1. SI ONGLET "ALL THE WEB" (WEB) : AJOUT DE L'ENCADRÉ D'EXPLICATION AVEC LES LIENS UTILS
+            if (state.currentTab === 'web') {
+                const infoBox = document.createElement('div');
+                infoBox.className = "p-5 bg-gradient-to-r from-brand-50 to-indigo-50 dark:from-slate-900/50 dark:to-brand-950/20 border border-brand-100 dark:border-brand-900/50 rounded-2xl shadow-sm mb-6";
+                infoBox.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="p-2.5 bg-brand-500 text-white rounded-xl mt-0.5 shadow-md shadow-brand-500/20 shrink-0">
+                            <i class="fa-solid fa-circle-info text-base"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base mb-1">About All the Web</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                                This indexing segment crawls deep web documents, structured guides, and technical wikis. Standard keywords are combined with basic NLP weighting schema to ensure highly relevant ranking.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-500">
+                                <span class="font-semibold text-slate-400">Quick Reference Links:</span>
+                                <a href="https://www.wikipedia.org" target="_blank" class="text-brand-600 hover:underline dark:text-brand-400 flex items-center space-x-1">
+                                    <span>Wikipedia</span><i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                                </a>
+                                <a href="https://github.com" target="_blank" class="text-brand-600 hover:underline dark:text-brand-400 flex items-center space-x-1">
+                                    <span>GitHub Dev</span><i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                                </a>
+                                <a href="https://google.com" target="_blank" class="text-brand-600 hover:underline dark:text-brand-400 flex items-center space-x-1">
+                                    <span>Google</span><i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(infoBox);
+            }
+
+            if (state.results.length === 0) {
+                const emptyState = document.createElement('div');
+                emptyState.className = "text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 px-6";
+                emptyState.innerHTML = `
+                    <div class="inline-flex w-14 h-14 bg-rose-50 dark:bg-rose-950/30 text-rose-500 rounded-full items-center justify-center mb-4">
+                        <i class="fa-solid fa-face-frown text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">No results found</h3>
+                    <p class="text-sm text-slate-500 mt-2 max-w-md mx-auto">Your query <span class="font-semibold text-rose-500">"${state.query}"</span> did not match any indexed documents.</p>
+                    <div class="mt-6 flex justify-center gap-3">
+                        <button onclick="clearSearch('header-search-input'); goHome();" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold rounded-lg transition-colors">Go Home</button>
+                        <button onclick="switchTab('crawler')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg transition-all shadow-md">Index This Page Now</button>
+                    </div>
+                `;
+                listContainer.appendChild(emptyState);
+                return;
+            }
+
+            // Boucle de rendu
+            if (state.currentTab === 'web' || state.currentTab === 'news') {
+                state.results.forEach(doc => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row gap-5";
+                    
+                    // Visual thumb insertion if image is attached
+                    let imgHTML = '';
+                    if (doc.image) {
+                        imgHTML = `
+                            <div class="w-full md:w-36 h-28 shrink-0 rounded-xl overflow-hidden bg-slate-100 border border-slate-200/50 dark:border-slate-800 cursor-pointer" onclick="openViewer('${doc.id}')">
+                                <img src="${doc.image}" alt="${doc.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'">
+                            </div>
+                        `;
+                    }
+
+                    card.innerHTML = `
+                        ${imgHTML}
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center space-x-2 text-[11px] text-slate-400 mb-2 truncate">
+                                <i class="fa-solid fa-shield-halved text-emerald-500"></i>
+                                <span class="font-mono text-slate-500 dark:text-slate-400 truncate">${doc.url}</span>
+                                <span>•</span>
+                                <span>${formatDateString(doc.date)}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-brand-600 dark:text-brand-400 hover:underline cursor-pointer transition-all truncate" onclick="openViewer('${doc.id}')">
+                                ${highlightText(doc.title, state.query)}
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed line-clamp-2">
+                                ${highlightText(doc.content || doc.description, state.query)}
+                            </p>
+                            <div class="flex flex-wrap items-center gap-1.5 mt-4">
+                                ${(doc.tags || []).map(t => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-[10px] rounded-md font-semibold text-slate-500 dark:text-slate-400">#${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                    listContainer.appendChild(card);
+                });
+            } else if (state.currentTab === 'images') {
+                const grid = document.createElement('div');
+                grid.className = "grid grid-cols-1 sm:grid-cols-2 gap-4";
+                state.results.forEach(doc => {
+                    const fallbackImg = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600";
+                    const imgSrc = doc.image || fallbackImg;
+                    
+                    const imgCard = document.createElement('div');
+                    imgCard.className = "group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all";
+                    imgCard.onclick = () => openViewer(doc.id);
+                    imgCard.innerHTML = `
+                        <div class="aspect-video w-full overflow-hidden bg-slate-100">
+                            <img src="${imgSrc}" alt="${doc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='${fallbackImg}'">
+                        </div>
+                        <div class="p-3">
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200 truncate">${doc.title}</h4>
+                            <span class="text-[10px] text-slate-400 font-mono block truncate mt-1">${doc.url}</span>
+                        </div>
+                    `;
+                    grid.appendChild(imgCard);
+                });
+                listContainer.appendChild(grid);
+            }
+        }
+
+        /* RENDU KNOWLEDGE GRAPH */
+        function renderKnowledgeGraph() {
+            const kgCard = document.getElementById('knowledge-graph-card');
+            const bestMatch = state.results[0];
+            if (!bestMatch || state.query.length < 3) {
+                kgCard.classList.add('hidden');
+                return;
+            }
+
+            kgCard.classList.remove('hidden');
+            
+            const imgContainer = document.getElementById('kg-image-container');
+            if (bestMatch.image) {
+                document.getElementById('kg-image').src = bestMatch.image;
+                imgContainer.classList.remove('hidden');
+            } else {
+                imgContainer.classList.add('hidden');
+            }
+
+            document.getElementById('kg-title').textContent = bestMatch.title;
+            document.getElementById('kg-subtitle').textContent = `Category: ${bestMatch.category.toUpperCase()}`;
+            document.getElementById('kg-description').textContent = bestMatch.content || bestMatch.description;
+
+            const attrGrid = document.getElementById('kg-attributes');
+            attrGrid.innerHTML = `
+                <div class="bg-slate-50 dark:bg-slate-800/40 p-2 rounded-lg">
+                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Date Indexed</span>
+                    <span class="font-semibold text-slate-800 dark:text-slate-200">${formatDateString(bestMatch.date)}</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/40 p-2 rounded-lg">
+                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Keywords</span>
+                    <span class="font-semibold text-slate-800 dark:text-slate-200 truncate block">${(bestMatch.tags || []).slice(0, 2).join(', ')}</span>
+                </div>
+            `;
+
+            document.getElementById('kg-link').onclick = (e) => {
+                e.preventDefault();
+                openViewer(bestMatch.id);
+            };
+        }
+
+        /* CRAWLER CONSOLE & INDEXATION PROCESS */
+        async function startCrawlingProcess() {
+            const title = document.getElementById('crawl-title').value.trim();
+            const url = document.getElementById('crawl-url').value.trim();
+            const content = document.getElementById('crawl-content').value.trim();
+            const category = document.getElementById('crawl-category').value;
+            const tagsInput = document.getElementById('crawl-tags').value;
+            const customImg = document.getElementById('crawl-image').value.trim();
+
+            if (!title || !url || !content) {
+                showToast("⚠️ All mandatory fields (*) must be completed.");
+                return;
+            }
+
+            const term = document.getElementById('crawler-terminal');
+            term.innerHTML = '';
+
+            logToConsole(`[INFO] Initializing Invenio Indexing Engine v1.26`, "text-indigo-400");
+            
+            setTimeout(() => {
+                logToConsole(`[CONNECTING] Fetching request packets for: ${url}...`, "text-blue-400");
+            }, 500);
+
+            if (state.useAPI) {
+                setTimeout(async () => {
+                    logToConsole(`[SENDING] Sending indexed document payload to local Flask server...`, "text-yellow-400");
+                    try {
+                        const response = await fetch('/api/index', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                title, url, content, category, tags: tagsInput, image: customImg
+                            })
+                        });
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            logToConsole(`[SUCCESS] Flask REST API 200 OK Response.`, "text-green-500");
+                            logToConsole(`[NLP] Auto-extracted Keywords: ${(data.extracted_keywords || []).join(', ')}`, "text-blue-300");
+                            logToConsole(`[DONE] Document index finalized and saved persistently.`, "text-green-400 font-bold");
+                            showToast("🎉 Page indexed successfully inside Flask!");
+                            
+                            // Reset
+                            document.getElementById('crawl-title').value = '';
+                            document.getElementById('crawl-url').value = '';
+                            document.getElementById('crawl-content').value = '';
+                            document.getElementById('crawl-tags').value = '';
+                            document.getElementById('crawl-image').value = '';
+                            
+                            fetchStatsFromBackend();
+                        } else {
+                            logToConsole(`[ERROR] Request rejected: ${data.error}`, "text-rose-500");
+                        }
+                    } catch(err) {
+                        logToConsole(`[ERROR] Network failure connecting to Python server.`, "text-rose-500");
+                    }
+                }, 1300);
+            } else {
+                // SIMULATION MODE
+                setTimeout(() => {
+                    logToConsole(`[ANALYSIS] Parsing document tokens & removing stop words...`, "text-yellow-400");
+                }, 1000);
+
+                setTimeout(() => {
+                    const tagsArray = tagsInput.split(',').map(t => t.trim()).filter(t => t.length > 0);
+                    const newId = Date.now();
+                    const newDoc = {
+                        id: newId,
+                        title,
+                        url,
+                        content,
+                        description: content,
+                        category,
+                        image: customImg || "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
+                        tags: tagsArray.length > 0 ? tagsArray : ["crawl-fictif"],
+                        date: new Date().toISOString().split('T')[0]
+                    };
+
+                    state.database.push(newDoc);
+                    document.getElementById('stat-total-pages').textContent = state.database.length;
+
+                    logToConsole(`[SUCCESS] New entity locally registered inside JS runtime memory stack.`, "text-green-400");
+                    logToConsole(`[NLP] Token Extraction Finished. Tags: ${tagsArray.join(', ')}`, "text-brand-400");
+                    logToConsole(`[DONE] Simulation crawler finished.`, "text-green-400 font-bold");
+                    showToast("🎉 Successfully indexed page in Local storage!");
+
+                    // Reset
+                    document.getElementById('crawl-title').value = '';
+                    document.getElementById('crawl-url').value = '';
+                    document.getElementById('crawl-content').value = '';
+                    document.getElementById('crawl-tags').value = '';
+                    document.getElementById('crawl-image').value = '';
+                }, 2000);
+            }
+        }
+
+        /* SIMULATED VOICE SEARCH */
+        function simulateVoiceSearch(inputElementId) {
+            const inputField = document.getElementById(inputElementId);
+            inputField.value = "";
+            inputField.placeholder = "Listening... Speak now";
+            inputField.classList.add('ring-2', 'ring-rose-500/50', 'bg-rose-50/10');
+            showToast("🎙️ Speech Recognition Simulation Started");
+
+            const sampleQueries = [
+                "artificial intelligence future",
+                "modern javascript es15 guide",
+                "traditional crepes recipe",
+                "mars exploration nasa"
+            ];
+
+            const chosenSample = sampleQueries[Math.floor(Math.random() * sampleQueries.length)];
+            let charIndex = 0;
+
+            if (state.voiceInterval) clearInterval(state.voiceInterval);
+
+            state.voiceInterval = setInterval(() => {
+                if (charIndex < chosenSample.length) {
+                    inputField.value += chosenSample.charAt(charIndex);
+                    charIndex++;
+                } else {
+                    clearInterval(state.voiceInterval);
+                    setTimeout(() => {
+                        inputField.placeholder = "Search All Web, images, news...";
+                        inputField.classList.remove('ring-2', 'ring-rose-500/50', 'bg-rose-50/10');
+                        triggerSearch(chosenSample);
+                    }, 500);
+                }
+            }, 60);
+        }
+
+        /* TABS NAVIGATION */
+        function switchTab(tabName) {
+            const tabs = ['web', 'images', 'news', 'crawler'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tabName) {
+                    btn.className = "py-3 border-b-2 border-brand-500 text-brand-600 dark:text-brand-400 font-semibold flex items-center space-x-2 shrink-0 transition-all";
+                } else {
+                    btn.className = "py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium flex items-center space-x-2 shrink-0 transition-all";
+                }
+            });
+
+            state.currentTab = tabName;
+
+            const resultsToolbar = document.getElementById('results-toolbar');
+            const searchResultsList = document.getElementById('search-results-list');
+            const crawlerView = document.getElementById('crawler-view');
+            const kgCard = document.getElementById('knowledge-graph-card');
+
+            if (tabName === 'crawler') {
+                resultsToolbar.classList.add('hidden');
+                searchResultsList.classList.add('hidden');
+                kgCard.classList.add('hidden');
+                crawlerView.classList.remove('hidden');
+            } else {
+                resultsToolbar.classList.remove('hidden');
+                searchResultsList.classList.remove('hidden');
+                crawlerView.classList.add('hidden');
+                if (state.query) {
+                    triggerSearch(state.query);
+                }
+            }
+        }
+
+        /* WEB VIEW DETAILS / IFRAME SIMULATOR */
+        function openViewer(documentId) {
+            const parsedId = isNaN(documentId) ? documentId : parseInt(documentId);
+            let doc = state.database.find(item => item.id === parsedId);
+            
+            if (state.useAPI && state.results.length > 0) {
+                const found = state.results.find(item => item.id === parsedId);
+                if (found) doc = found;
+            }
+
+            if (!doc) return;
+
+            document.getElementById('modal-browser-url').textContent = doc.url;
+            document.getElementById('viewer-badge').textContent = doc.category;
+            document.getElementById('viewer-title').textContent = doc.title;
+            document.getElementById('viewer-date').textContent = `Date indexed: ${formatDateString(doc.date)}`;
+            document.getElementById('viewer-content').textContent = doc.content || doc.description;
+
+            const artContainer = document.getElementById('viewer-art-container');
+            const artImg = document.getElementById('viewer-art');
+            if (doc.image) {
+                artImg.src = doc.image;
+                artContainer.classList.remove('hidden');
+            } else {
+                artContainer.classList.add('hidden');
+            }
+
+            document.getElementById('viewer-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeViewer() {
+            document.getElementById('viewer-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        /* HEURISTICS / UTILITIES */
+        function applySpellcheckCorrection() {
+            if (state.spellcheckedQuery) {
+                triggerSearch(state.spellcheckedQuery);
+            }
+        }
+
+        function simulateOfflineSpellcheck() {
+            const query = state.query.toLowerCase();
+            let minDistance = 99;
+            let bestSuggestion = null;
+
+            state.database.forEach(doc => {
+                const words = doc.title.toLowerCase().split(/\s+/);
+                words.forEach(word => {
+                    const cleaned = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+                    if (cleaned.length > 3 && query.length > 3) {
+                        const distance = getLevenshteinDistance(query, cleaned);
+                        if (distance > 0 && distance < 3 && distance < minDistance) {
+                            minDistance = distance;
+                            bestSuggestion = cleaned;
+                        }
+                    }
+                });
+            });
+
+            const notice = document.getElementById('did-you-mean-container');
+            if (bestSuggestion && bestSuggestion !== query) {
+                state.spellcheckedQuery = bestSuggestion;
+                document.getElementById('spellcheck-suggestion-btn').textContent = bestSuggestion;
+                notice.classList.remove('hidden');
+            } else {
+                state.spellcheckedQuery = null;
+                notice.classList.add('hidden');
+            }
+        }
+
+        function getLevenshteinDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) { matrix[i] = [i]; }
+            for (let j = 0; j <= a.length; j++) { matrix[0][j] = j; }
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
+        function highlightText(text, search) {
+            if (!text) return '';
+            if (!search) return text;
+            const cleanSearch = search.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const words = cleanSearch.split(/\s+/).filter(word => word.length > 0);
+            if (words.length === 0) return text;
+            
+            let highlighted = text;
+            words.forEach(word => {
+                const regex = new RegExp(`(${word})`, 'gi');
+                highlighted = highlighted.replace(regex, '<mark class="search-highlight">$1</mark>');
+            });
+            return highlighted;
+        }
+
+        function clearSearch(inputId) {
+            document.getElementById(inputId).value = '';
+            document.getElementById(inputId === 'home-search-input' ? 'home-clear-btn' : 'header-clear-btn').classList.add('hidden');
+            document.getElementById(inputId === 'home-search-input' ? 'home-suggestions' : 'header-suggestions').classList.add('hidden');
+        }
+
+        function goHome() {
+            document.getElementById('results-view').classList.add('hidden');
+            document.getElementById('header-search-container').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('hidden');
+            clearSearch('home-search-input');
+            clearSearch('header-search-input');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 text-sm";
+            setTimeout(() => {
+                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 text-sm";
+            }, 3000);
+        }
+
+        function logToConsole(message, cssClass = "text-slate-300") {
+            const term = document.getElementById('crawler-terminal');
+            const line = document.createElement('div');
+            line.className = `${cssClass} font-mono mt-1`;
+            line.textContent = `> ${message}`;
+            term.appendChild(line);
+            term.scrollTop = term.scrollHeight;
+        }
+
+        function clearConsole() {
+            const term = document.getElementById('crawler-terminal');
+            term.innerHTML = `<div class="text-slate-500">// Crawler engine cleared and ready for new URLs...</div>`;
+        }
+
+        function formatDateString(dateStr) {
+            if (!dateStr) return "Unknown";
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function renderPopularPills() {
+            const container = document.getElementById('popular-pills');
+            const pills = ["Artificial Intelligence", "JavaScript", "French Crêpes", "Nexeo", "Google"];
+            container.innerHTML = '';
+            pills.forEach(p => {
+                const btn = document.createElement('button');
+                btn.className = "px-3 py-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-brand-500 hover:text-white dark:hover:bg-brand-600 border border-slate-200/60 dark:border-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium transition-all duration-150";
+                btn.textContent = p;
+                btn.onclick = () => triggerSearch(p);
+                container.appendChild(btn);
+            });
+        }
+
+        function renderTrendingList() {
+            const container = document.getElementById('trending-list');
+            const trends = [
+                "Python Flask API integration guide",
+                "Deep space lunar missions in 2026",
+                "How to make traditional crepes perfectly",
+                "Start learning modern coding models"
+            ];
+            container.innerHTML = '';
+            trends.forEach(t => {
+                const li = document.createElement('li');
+                li.className = "flex items-center space-x-2.5 cursor-pointer hover:text-brand-500 transition-colors py-0.5";
+                li.innerHTML = `
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <span>${t}</span>
+                `;
+                li.onclick = () => triggerSearch(t);
+                container.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
