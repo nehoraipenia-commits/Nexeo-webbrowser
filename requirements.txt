@@ -1,2 +1,3 @@
 flasck
 flasck-cors
+gunicorn 
