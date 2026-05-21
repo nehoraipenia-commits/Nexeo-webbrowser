@@ -1,3 +1,3 @@
-flasck
-flasck-cors
+flask
+flask-cors
 gunicorn 
