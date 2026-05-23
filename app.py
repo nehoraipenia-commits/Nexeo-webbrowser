@@ -355,6 +355,6 @@ def api_get_document(doc_id):
 if __name__ == '__main__':
     load_db()
     print("--------------------------------------------------")
-    print(NEXEO Search Engine Engine running on http://127.0.0.1:5000)
+    print("NEXEO Search Engine Engine running on http://127.0.0.1:5000")
     print("--------------------------------------------------")
     app.run(host='127.0.0.1', port=5000, debug=True)
