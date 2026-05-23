@@ -1,4 +1,4 @@
-# IA
+# NEXEO
 
 Voici les étapes pour installer et lancer le moteur de recherche  sur votre machine.
 
