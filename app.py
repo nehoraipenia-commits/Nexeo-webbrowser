@@ -71,7 +71,7 @@ DEFAULT_DATABASE = [
         "id": 5,
         "title": "History: The Night of August 4, 1789 and the End of Privileges",
         "url": "https://www.history-france.org/revolution/night-august-4-1789",
-        "description": "A comprehensive historical study of the National Assembly session that abolished feudal rights and privileges, marking a major turning point of the French Revolution.",
+        "description": "A comprehensive historical study of theINVENIOnal Assembly session that abolished feudal rights and privileges, marking a major turning point of the French Revolution.",
         "category": "web",
         "tags": ["history", "france", "revolution", "archives", "culture"],
         "date": "2023-11-04",
@@ -355,6 +355,6 @@ def api_get_document(doc_id):
 if __name__ == '__main__':
     load_db()
     print("--------------------------------------------------")
-    print("INVENIO Search Engine Engine running on http://127.0.0.1:5000")
+    print(NEXEO Search Engine Engine running on http://127.0.0.1:5000")
     print("--------------------------------------------------")
     app.run(host='127.0.0.1', port=5000, debug=True)
